@@ -18,5 +18,6 @@ public class EPPIcon {
     public static final Blitter BUCKET = Blitter.texture(TEXTURE, 64, 64).src(48, 16, 16, 16);
     public static final Blitter OVER_STACK = Blitter.texture(TEXTURE, 64, 64).src(0, 32, 16, 16);
     public static final Blitter BELOW_STACK = Blitter.texture(TEXTURE, 64, 64).src(16, 32, 16, 16);
+    public static final Blitter STACK_4 = Blitter.texture(TEXTURE, 64, 64).src(32, 32, 16, 16);
 
 }

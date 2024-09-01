@@ -67,6 +67,7 @@
   "gui.extendedae.ex_inscriber.pre": "Предыдущая страница",
   "gui.extendedae.ex_inscriber.number": "Страница %s",
   "gui.extendedae.ex_inscriber.unstackable": "Размер слота - 1",
+  "gui.extendedae.ex_inscriber.fourstackable": "Размер слота - 4",
   "gui.extendedae.ex_inscriber.stackable": "Размер слота - 64",
   "gui.extendedae.ex_io_port": "МЭ Расширенный порт ввода/вывода",
   "gui.extendedae.precise_storage_bus": "МЭ Точная шина хранения",
