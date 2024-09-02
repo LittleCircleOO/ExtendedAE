@@ -154,6 +154,10 @@ public class ClientRegistryHandler {
         BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.EX_ASSEMBLER, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.INGREDIENT_BUFFER, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.FISHBIG, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.ENTRO_BUD_SMALL, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.ENTRO_BUD_MEDIUM, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.ENTRO_BUD_LARGE, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.ENTRO_CLUSTER, RenderType.cutout());
     }
 
 }
