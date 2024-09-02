@@ -1,5 +1,7 @@
 package com.github.glodblock.extendedae.datagen;
 
+import appeng.api.ids.AETags;
+import com.github.glodblock.extendedae.common.EAEItemAndBlock;
 import com.github.glodblock.extendedae.common.RegistryHandler;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -16,9 +18,13 @@ public class EAEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        var pickaxe = this.getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE);
         for (var block : RegistryHandler.INSTANCE.getBlocks()) {
-            pickaxe.add(block);
+            this.getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(block);
         }
+        this.getOrCreateTagBuilder(AETags.GROWTH_ACCELERATABLE)
+                .add(EAEItemAndBlock.FULLY_ENTROIZED_FLUIX_BUDDING)
+                .add(EAEItemAndBlock.MOSTLY_ENTROIZED_FLUIX_BUDDING)
+                .add(EAEItemAndBlock.HALF_ENTROIZED_FLUIX_BUDDING)
+                .add(EAEItemAndBlock.HARDLY_ENTROIZED_FLUIX_BUDDING);
     }
 }
