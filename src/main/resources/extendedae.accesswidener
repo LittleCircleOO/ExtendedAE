@@ -3,3 +3,4 @@ accessible field net/minecraft/world/item/context/UseOnContext hitResult Lnet/mi
 accessible field net/minecraft/client/resources/model/ModelManager bakedRegistry Ljava/util/Map;
 accessible field net/minecraft/client/gui/screens/Screen renderables Ljava/util/List;
 accessible method net/minecraft/client/gui/screens/inventory/AbstractContainerScreen findSlot (DD)Lnet/minecraft/world/inventory/Slot;
+accessible method net/minecraft/world/item/crafting/RecipeManager byType (Lnet/minecraft/world/item/crafting/RecipeType;)Ljava/util/Map;

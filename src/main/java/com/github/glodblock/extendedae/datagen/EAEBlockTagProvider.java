@@ -1,6 +1,7 @@
 package com.github.glodblock.extendedae.datagen;
 
 import appeng.api.ids.AETags;
+import appeng.datagen.providers.tags.ConventionTags;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
 import com.github.glodblock.extendedae.common.RegistryHandler;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -26,5 +27,14 @@ public class EAEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(EAEItemAndBlock.MOSTLY_ENTROIZED_FLUIX_BUDDING)
                 .add(EAEItemAndBlock.HALF_ENTROIZED_FLUIX_BUDDING)
                 .add(EAEItemAndBlock.HARDLY_ENTROIZED_FLUIX_BUDDING);
+        this.getOrCreateTagBuilder(ConventionTags.BUDDING_BLOCKS_BLOCKS)
+                .add(EAEItemAndBlock.FULLY_ENTROIZED_FLUIX_BUDDING)
+                .add(EAEItemAndBlock.MOSTLY_ENTROIZED_FLUIX_BUDDING)
+                .add(EAEItemAndBlock.HALF_ENTROIZED_FLUIX_BUDDING)
+                .add(EAEItemAndBlock.HARDLY_ENTROIZED_FLUIX_BUDDING);
+        this.getOrCreateTagBuilder(ConventionTags.BUDS_BLOCKS)
+                .add(EAEItemAndBlock.ENTRO_BUD_SMALL)
+                .add(EAEItemAndBlock.ENTRO_BUD_MEDIUM)
+                .add(EAEItemAndBlock.ENTRO_BUD_LARGE);
     }
 }
