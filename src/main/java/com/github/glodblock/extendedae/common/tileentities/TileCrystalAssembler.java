@@ -32,7 +32,6 @@ import appeng.util.inv.AppEngInternalInventory;
 import appeng.util.inv.CombinedInternalInventory;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
 import com.github.glodblock.extendedae.recipe.CrystalAssemblerRecipe;
-import com.github.glodblock.extendedae.util.async.RecipeHolder;
 import com.github.glodblock.extendedae.util.async.RecipeSearchContext;
 import com.github.glodblock.extendedae.util.FCUtil;
 import net.minecraft.core.BlockPos;
@@ -238,7 +237,7 @@ public class TileCrystalAssembler extends AENetworkPowerBlockEntity implements I
                 }
                 if (this.progress >= MAX_PROGRESS) {
                     this.progress = 0;
-                    var outputStack = runRecipe.value().output.copy();
+                    var outputStack = runRecipe.output.copy();
                     if (this.ctx.testRecipe(runRecipe) && this.output.insertItem(0, outputStack, true).isEmpty()) {
                         this.ctx.runRecipe(runRecipe);
                         this.output.insertItem(0, outputStack, false);
@@ -316,7 +315,7 @@ public class TileCrystalAssembler extends AENetworkPowerBlockEntity implements I
         }
 
         @Override
-        public void onFind(@Nullable RecipeHolder<CrystalAssemblerRecipe> recipe) {
+        public void onFind(@Nullable CrystalAssemblerRecipe recipe) {
             super.onFind(recipe);
             if (recipe != null) {
                 this.host.getMainNode().ifPresent((grid, node) -> grid.getTickManager().wakeDevice(node));
@@ -324,23 +323,17 @@ public class TileCrystalAssembler extends AENetworkPowerBlockEntity implements I
         }
 
         @Override
-        public RecipeHolder<CrystalAssemblerRecipe> searchRecipe() {
+        public CrystalAssemblerRecipe searchRecipe() {
             if (this.host.level == null) {
                 return null;
             }
             var recipes = this.host.level.getRecipeManager().byType(CrystalAssemblerRecipe.TYPE);
             for (var recipe : recipes.values()) {
                 if (testRecipe(recipe)) {
-                    return new RecipeHolder<>(recipe.getId(), recipe);
+                    return recipe;
                 }
             }
             return null;
-        }
-
-        @Override
-        public boolean testRecipe(RecipeHolder<CrystalAssemblerRecipe> recipe) {
-            var value = recipe.value();
-            return testRecipe(value);
         }
 
         public boolean testRecipe(CrystalAssemblerRecipe recipe) {
@@ -372,8 +365,8 @@ public class TileCrystalAssembler extends AENetworkPowerBlockEntity implements I
         }
 
         @Override
-        public void runRecipe(RecipeHolder<CrystalAssemblerRecipe> recipe) {
-            var sample = recipe.value().getSample();
+        public void runRecipe(CrystalAssemblerRecipe recipe) {
+            var sample = recipe.getSample();
             var fluid = this.host.tank.getStack(0);
             FluidStack fluidStack = null;
             if (fluid != null && fluid.what() instanceof AEFluidKey key) {
@@ -420,10 +413,10 @@ public class TileCrystalAssembler extends AENetworkPowerBlockEntity implements I
         public void save(CompoundTag tag) {
             var nbt = new CompoundTag();
             if (this.currentRecipe != null) {
-                nbt.putString("current", this.currentRecipe.id().toString());
+                nbt.putString("current", this.currentRecipe.getId().toString());
             }
             if (this.lastRecipe != null) {
-                nbt.putString("last", this.lastRecipe.id().toString());
+                nbt.putString("last", this.lastRecipe.getId().toString());
             }
             tag.put("recipeCtx", nbt);
         }
@@ -433,7 +426,7 @@ public class TileCrystalAssembler extends AENetworkPowerBlockEntity implements I
             if (tag.contains("current")) {
                 try {
                     var id = new ResourceLocation(tag.getString("current"));
-                    this.currentRecipe = new RecipeHolder<>(id, this.host.level.getRecipeManager().byType(CrystalAssemblerRecipe.TYPE).get(id));
+                    this.currentRecipe = this.host.level.getRecipeManager().byType(CrystalAssemblerRecipe.TYPE).get(id);
                 } catch (Throwable e) {
                     this.currentRecipe = null;
                 }
@@ -441,7 +434,7 @@ public class TileCrystalAssembler extends AENetworkPowerBlockEntity implements I
             if (tag.contains("last")) {
                 try {
                     var id = new ResourceLocation(tag.getString("last"));
-                    this.lastRecipe = new RecipeHolder<>(id, this.host.level.getRecipeManager().byType(CrystalAssemblerRecipe.TYPE).get(id));
+                    this.lastRecipe = this.host.level.getRecipeManager().byType(CrystalAssemblerRecipe.TYPE).get(id);
                 } catch (Throwable e) {
                     this.lastRecipe = null;
                 }

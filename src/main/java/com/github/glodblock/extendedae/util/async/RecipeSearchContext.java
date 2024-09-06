@@ -9,9 +9,9 @@ public abstract class RecipeSearchContext<T extends Recipe<?>> {
     public boolean stuck;
     public boolean dirty;
     @Nullable
-    public RecipeHolder<T> lastRecipe;
+    public T lastRecipe;
     @Nullable
-    public RecipeHolder<T> currentRecipe;
+    public T currentRecipe;
 
     public void findRecipe() {
         if (lastRecipe != null) {
@@ -42,7 +42,7 @@ public abstract class RecipeSearchContext<T extends Recipe<?>> {
         return !wait && !stuck;
     }
 
-    public void onFind(@Nullable RecipeHolder<T> recipe) {
+    public void onFind(@Nullable T recipe) {
         wait = false;
         if (recipe == null) {
             if (dirty) {
@@ -67,10 +67,10 @@ public abstract class RecipeSearchContext<T extends Recipe<?>> {
         currentRecipe = null;
     }
 
-    public abstract RecipeHolder<T> searchRecipe();
+    public abstract T searchRecipe();
 
-    public abstract boolean testRecipe(RecipeHolder<T> recipe);
+    public abstract boolean testRecipe(T recipe);
 
-    public abstract void runRecipe(RecipeHolder<T> recipe);
+    public abstract void runRecipe(T recipe);
 
 }
