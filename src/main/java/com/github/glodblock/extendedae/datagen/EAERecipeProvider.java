@@ -12,6 +12,7 @@ import appeng.recipes.transform.TransformCircumstance;
 import appeng.recipes.transform.TransformRecipeBuilder;
 import com.github.glodblock.extendedae.EAE;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
+import com.github.glodblock.extendedae.recipe.CrystalAssemblerRecipeBuilder;
 import com.github.glodblock.extendedae.util.CommonTags;
 import com.github.glodblock.extendedae.util.EAETags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -93,7 +94,7 @@ public class EAERecipeProvider extends FabricRecipeProvider {
                 .save(c, EAE.id("ex_interface_alt"));
 
         // Infinity Cell
-        ShapedRecipeBuilder
+        NBTRecipeBuilder
                 .shaped(RecipeCategory.MISC, EAEItemAndBlock.INFINITY_CELL.getRecordCell(AEFluidKey.of(Fluids.WATER)))
                 .pattern("CWC")
                 .pattern("WXW")
@@ -104,7 +105,7 @@ public class EAERecipeProvider extends FabricRecipeProvider {
                 .define('I', ConventionTags.DIAMOND)
                 .unlockedBy(C, has(EAEItemAndBlock.INFINITY_CELL))
                 .save(c, EAE.id("water_cell"));
-        ShapedRecipeBuilder
+        NBTRecipeBuilder
                 .shaped(RecipeCategory.MISC, EAEItemAndBlock.INFINITY_CELL.getRecordCell(AEItemKey.of(Blocks.COBBLESTONE)))
                 .pattern("CLC")
                 .pattern("WXW")
@@ -528,7 +529,7 @@ public class EAERecipeProvider extends FabricRecipeProvider {
         transformation(c);
     }
 
-    private void transformation(@NotNull RecipeOutput c) {
+    private void transformation(@NotNull Consumer<FinishedRecipe> c) {
         // Fluix
         CrystalAssemblerRecipeBuilder
                 .assemble(AEItems.FLUIX_CRYSTAL, 8)
