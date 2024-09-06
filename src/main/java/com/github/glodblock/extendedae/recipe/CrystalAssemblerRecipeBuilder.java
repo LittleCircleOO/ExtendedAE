@@ -92,7 +92,7 @@ public class CrystalAssemblerRecipeBuilder {
     record Result(ResourceLocation id, List<IngredientStack.Item> input, IngredientStack.Fluid fluid, ItemStack output) implements FinishedRecipe {
         @Override
         public void serializeRecipeData(JsonObject json) {
-            //TODO: 序列化器
+            CrystalAssemblerRecipeSerializer.INSTANCE.toJson();
 
         }
 

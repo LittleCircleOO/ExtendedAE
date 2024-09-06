@@ -165,8 +165,8 @@ public class RegistryHandler {
     }
 
     private void onRegisterRecipe() {
-        Registry.register(BuiltInRegistries.RECIPE_TYPE, CrystalAssemblerRecipe.ID, CrystalAssemblerRecipe.TYPE);
-        Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, CrystalAssemblerRecipe.ID, CrystalAssemblerRecipeSerializer.INSTANCE);
+        Registry.register(BuiltInRegistries.RECIPE_TYPE, CrystalAssemblerRecipe.TYPE_ID, CrystalAssemblerRecipe.TYPE);
+        Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, CrystalAssemblerRecipe.TYPE_ID, CrystalAssemblerRecipeSerializer.INSTANCE);
     }
 
     private void onRegisterContainer() {

@@ -19,18 +19,20 @@ import java.util.Optional;
 
 public class CrystalAssemblerRecipe implements Recipe<Container> {
 
-    public static final ResourceLocation ID = EAE.id("crystal_assembler");
-    public static final RecipeType<CrystalAssemblerRecipe> TYPE = RecipeType.register(ID.toString());
+    public static final ResourceLocation TYPE_ID = EAE.id("crystal_assembler");
+    public static final RecipeType<CrystalAssemblerRecipe> TYPE = RecipeType.register(TYPE_ID.toString());
 
+    private final ResourceLocation id;
     protected final List<IngredientStack.Item> inputs;
     protected final Optional<IngredientStack.Fluid> fluid;
     public final ItemStack output;
 
-    public CrystalAssemblerRecipe(ItemStack output, List<IngredientStack.Item> inputs, IngredientStack.Fluid fluid) {
-        this(output, inputs, Optional.ofNullable(fluid));
+    public CrystalAssemblerRecipe(ResourceLocation id, ItemStack output, List<IngredientStack.Item> inputs, IngredientStack.Fluid fluid) {
+        this(id, output, inputs, Optional.ofNullable(fluid));
     }
 
-    public CrystalAssemblerRecipe(ItemStack output, List<IngredientStack.Item> inputs, Optional<IngredientStack.Fluid> fluid) {
+    public CrystalAssemblerRecipe(ResourceLocation id, ItemStack output, List<IngredientStack.Item> inputs, Optional<IngredientStack.Fluid> fluid) {
+        this.id = id;
         this.output = output;
         this.inputs = inputs;
         this.fluid = fluid;
@@ -77,8 +79,8 @@ public class CrystalAssemblerRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ResourceLocation getId() {
-        return ID;
+    public @NotNull ResourceLocation getId() {
+        return id;
     }
 
     @Override

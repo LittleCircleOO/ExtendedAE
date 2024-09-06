@@ -4,6 +4,7 @@ import com.github.glodblock.extendedae.recipe.util.IngredientStack;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.NotNull;
@@ -34,7 +35,7 @@ public class CrystalAssemblerRecipeSerializer implements RecipeSerializer<Crysta
     }
 
     @Override
-    public @NotNull CrystalAssemblerRecipe fromNetwork(@NotNull FriendlyByteBuf buffer) {
+    public @NotNull CrystalAssemblerRecipe fromNetwork(ResourceLocation recipeID, @NotNull FriendlyByteBuf buffer) {
         ItemStack output = buffer.readItem();
         int inputSize = buffer.readByte();
         List<IngredientStack.Item> inputs = new ArrayList<>();
@@ -45,7 +46,7 @@ public class CrystalAssemblerRecipeSerializer implements RecipeSerializer<Crysta
         if (buffer.readBoolean()) {
             fluid = IngredientStack.ofFluid(buffer);
         }
-        return new CrystalAssemblerRecipe(output, inputs, fluid);
+        return new CrystalAssemblerRecipe(recipeID, output, inputs, fluid);
     }
 
     @Override
