@@ -84,21 +84,18 @@ public class CrystalAssemblerRecipeBuilder {
     }
 
     public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
-        //var recipe = new CrystalAssemblerRecipe(this.output, this.inputs, this.fluid);
-        //consumer.accept(id, recipe, null);
-        consumer.accept(new Result(id, this.inputs, this.fluid, this.output));
+        consumer.accept(new Result(new CrystalAssemblerRecipe(id, this.output, this.inputs, this.fluid)));
     }
 
-    record Result(ResourceLocation id, List<IngredientStack.Item> input, IngredientStack.Fluid fluid, ItemStack output) implements FinishedRecipe {
+    record Result(CrystalAssemblerRecipe recipe) implements FinishedRecipe {
         @Override
         public void serializeRecipeData(JsonObject json) {
-            CrystalAssemblerRecipeSerializer.INSTANCE.toJson();
-
+            CrystalAssemblerRecipeSerializer.INSTANCE.toJson(recipe, json);
         }
 
         @Override
         public ResourceLocation getId() {
-            return id;
+            return recipe.getId();
         }
 
         @Override

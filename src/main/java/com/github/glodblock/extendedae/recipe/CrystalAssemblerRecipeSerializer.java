@@ -1,6 +1,7 @@
 package com.github.glodblock.extendedae.recipe;
 
 import com.github.glodblock.extendedae.recipe.util.IngredientStack;
+import com.google.gson.JsonObject;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.FriendlyByteBuf;
@@ -11,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CrystalAssemblerRecipeSerializer implements RecipeSerializer<CrystalAssemblerRecipe> {
 
@@ -29,9 +31,20 @@ public class CrystalAssemblerRecipeSerializer implements RecipeSerializer<Crysta
         // NO-OP
     }
 
-    @Override
-    public @NotNull Codec<CrystalAssemblerRecipe> codec() {
-        return CODEC;
+    public CrystalAssemblerRecipe fromJson(ResourceLocation recipeID, JsonObject json){
+        ResourceLocation id = recipeID;
+        List<IngredientStack.Item> inputs = ; //TODO: Serializer
+        Optional<IngredientStack.Fluid> fluid = ;
+        ItemStack output = ;
+        return new CrystalAssemblerRecipe(id, output, inputs, fluid);
+    }
+
+    public void toJson(CrystalAssemblerRecipe recipe, JsonObject json){
+        ResourceLocation id = recipe.getId();
+        List<IngredientStack.Item> inputs = recipe.inputs;
+        Optional<IngredientStack.Fluid> fluid = recipe.fluid;
+        ItemStack output = recipe.output;
+        //TODO: Serializer
     }
 
     @Override
