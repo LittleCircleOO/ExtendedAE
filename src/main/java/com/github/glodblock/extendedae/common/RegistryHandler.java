@@ -10,6 +10,7 @@ import appeng.api.parts.PartModels;
 import appeng.api.storage.MEStorage;
 import appeng.api.storage.StorageCells;
 import appeng.api.upgrades.Upgrades;
+import appeng.block.AEBaseBlock;
 import appeng.block.AEBaseBlockItem;
 import appeng.block.AEBaseEntityBlock;
 import appeng.blockentity.AEBaseBlockEntity;
@@ -82,6 +83,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -145,7 +147,10 @@ public class RegistryHandler {
 
     private void onRegisterItems() {
         for (Pair<String, Block> entry : blocks) {
-            Registry.register(BuiltInRegistries.ITEM, EAE.id(entry.getLeft()), new AEBaseBlockItem(entry.getRight(), new Item.Properties()));
+            if(entry.getRight() instanceof AEBaseBlock)
+                Registry.register(BuiltInRegistries.ITEM, EAE.id(entry.getLeft()), new AEBaseBlockItem(entry.getRight(), new Item.Properties()));
+            else
+                Registry.register(BuiltInRegistries.ITEM, EAE.id(entry.getLeft()), new BlockItem(entry.getRight(), new Item.Properties()));
         }
         for (Pair<String, Item> entry : items) {
             Registry.register(BuiltInRegistries.ITEM, EAE.id(entry.getLeft()), entry.getRight());

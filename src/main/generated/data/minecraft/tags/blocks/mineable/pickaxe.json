@@ -12,6 +12,7 @@
     "extendedae:caner",
     "extendedae:crystal_fixer",
     "extendedae:ex_io_port",
-    "extendedae:fishbig"
+    "extendedae:fishbig",
+    "extendedae:silicon_block"
   ]
 }

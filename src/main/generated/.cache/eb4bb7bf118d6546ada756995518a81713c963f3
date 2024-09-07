@@ -1,5 +1,7 @@
-// 1.20.1	2024-06-07T14:20:29.2318012	ExtendedAE/Recipes
+// 1.20.1	2024-09-07T17:48:14.3183518	ExtendedAE/Recipes
+346c455129e100f839b972c4c9b606ccef5ef905 data\extendedae\advancements\recipes\misc\silicon_decompress.json
 f508e97befb44ee5bd19d9235e87cd6d6a325f0b data\extendedae\advancements\recipes\misc\ei.json
+9e0d67229c13bf766210683126aeee19b529d9be data\extendedae\recipes\silicon_decompress.json
 485a45f69fb55ed861471fe4b2684cdbe6f1df11 data\extendedae\advancements\recipes\misc\ei_alt.json
 27427c4dfc2bf1986ef4806648f1c94773b5af2f data\extendedae\advancements\recipes\misc\crystal_fixer.json
 7565fe99a7bd65f936fc47b0e1ad431e64446eec data\extendedae\recipes\epp_upgrade.json
@@ -36,6 +38,7 @@ de6eaf583206ca9c2e0790292b8bd8649ed5da2a data\extendedae\recipes\ex_drive_upgrad
 a0bcd6db7590feaa0f8568977b322ef55459b79e data\extendedae\recipes\ex_inscriber.json
 936fb9f1a7f392b8a7328b1a7b71d03b189a3265 data\extendedae\recipes\ei_upgrade.json
 8c350184b34ab81220ecbb6bbf5e8bba11bf679b data\extendedae\advancements\recipes\misc\epa.json
+354ef0f35da2bb6b786590b8ba5ecb807111727e data\extendedae\advancements\recipes\misc\silicon_block.json
 02b576b74866a4fa219ba5074e5cd56ed73b9131 data\extendedae\advancements\recipes\misc\pattern_modifier.json
 9e2bdedee3d97d2b3a4316ccf0828f4fb7dd46dc data\extendedae\advancements\recipes\misc\precise_storage_bus.json
 1faa2f305d08984545b99fa10be22969f681b39c data\extendedae\advancements\recipes\misc\wireless_tool.json
@@ -67,10 +70,11 @@ a6ee65b50356fb7d4f743c2bcd4ecfa5165a614c data\extendedae\advancements\recipes\mi
 639f072db9f8117fa778e22c68a52e64c29c6416 data\extendedae\recipes\epp.json
 1bac434a93253d0a1b6f0db81f4d2be6a3446301 data\extendedae\advancements\recipes\misc\caner.json
 226415d068b01103e857383464da3bf45fa847b0 data\extendedae\advancements\recipes\misc\fishbig.json
-de2cc74ae7419cbdad7713c6785bd1c0e06c2d2e data\extendedae\advancements\recipes\misc\epp_upgrade.json
 95c601b7549668d291eb0f334592454ef3d0c9fb data\extendedae\recipes\ei_part.json
+de2cc74ae7419cbdad7713c6785bd1c0e06c2d2e data\extendedae\advancements\recipes\misc\epp_upgrade.json
 f40a8b738597c587ec19a3fa27f859572dde6a41 data\extendedae\recipes\epp_alt.json
 cc629dd912783b3611af0e87536d631ce6ea3581 data\extendedae\advancements\recipes\misc\tag_storage_bus.json
+557bd7b81c3b3b21b2580b0ba0fbbc1ba5d04a86 data\extendedae\recipes\silicon_block.json
 260aba7256141fbfa9d4c2cf0760b35e7e500da8 data\extendedae\advancements\recipes\misc\ingredient_buffer.json
 6934a077604a55ff1c73d9a9b51001c30c8dbfb2 data\extendedae\recipes\fishbig.json
 9ee547a12347275beea13b2fb68bb5f2a12a2d5a data\extendedae\recipes\ei_alt.json

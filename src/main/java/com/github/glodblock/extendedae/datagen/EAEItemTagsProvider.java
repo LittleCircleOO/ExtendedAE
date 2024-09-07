@@ -1,6 +1,7 @@
 package com.github.glodblock.extendedae.datagen;
 
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
+import com.github.glodblock.extendedae.util.CommonTags;
 import com.github.glodblock.extendedae.util.EPPTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -22,5 +23,9 @@ public class EAEItemTagsProvider extends FabricTagProvider.ItemTagProvider {
         this.getOrCreateTagBuilder(EPPTags.EX_INTERFACE)
                 .add(EAEItemAndBlock.EX_INTERFACE_PART)
                 .add(EAEItemAndBlock.EX_INTERFACE.asItem());
+        this.getOrCreateTagBuilder(EPPTags.SILICON_BLOCK)
+                .add(EAEItemAndBlock.SILICON_BLOCK.asItem());
+        this.getOrCreateTagBuilder(CommonTags.STORAGE_BLOCKS)
+                .add(EAEItemAndBlock.SILICON_BLOCK.asItem());
     }
 }

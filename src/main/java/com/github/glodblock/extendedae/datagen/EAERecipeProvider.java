@@ -8,6 +8,7 @@ import appeng.core.definitions.AEParts;
 import appeng.datagen.providers.tags.ConventionTags;
 import com.github.glodblock.extendedae.EAE;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
+import com.github.glodblock.extendedae.util.EPPTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -433,6 +434,21 @@ public class EAERecipeProvider extends FabricRecipeProvider {
                 .define('F', Items.PUFFERFISH)
                 .unlockedBy(C, has(EAEItemAndBlock.FISHBIG))
                 .save(c, EAE.id("fishbig"));
+
+        // Silicon BLock
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, EAEItemAndBlock.SILICON_BLOCK)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ConventionTags.SILICON)
+                .unlockedBy(C, has(ConventionTags.SILICON))
+                .save(c, EAE.id("silicon_block"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, AEItems.SILICON, 9)
+                .requires(EPPTags.SILICON_BLOCK)
+                .unlockedBy(C, has(EPPTags.SILICON_BLOCK))
+                .save(c, EAE.id("silicon_decompress"));
     }
 
 }

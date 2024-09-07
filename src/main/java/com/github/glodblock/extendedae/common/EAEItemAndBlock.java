@@ -52,9 +52,13 @@ import com.github.glodblock.extendedae.common.tileentities.TileExPatternProvider
 import com.github.glodblock.extendedae.common.tileentities.TileIngredientBuffer;
 import com.github.glodblock.extendedae.common.tileentities.TileWirelessConnector;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+
+import static appeng.block.AEBaseBlock.metalProps;
 
 public class EAEItemAndBlock {
 
+    public static Block SILICON_BLOCK;
     public static BlockExPatternProvider EX_PATTERN_PROVIDER;
     public static PartItem<PartExPatternProvider> EX_PATTERN_PROVIDER_PART;
     public static BlockExInterface EX_INTERFACE;
@@ -142,6 +146,7 @@ public class EAEItemAndBlock {
         PRECISE_STORAGE_BUS = new PartItem<>(new Item.Properties(), PartPreciseStorageBus.class, PartPreciseStorageBus::new);
         THRESHOLD_EXPORT_BUS = new PartItem<>(new Item.Properties(), PartThresholdExportBus.class, PartThresholdExportBus::new);
         FISHBIG = new BlockFishbig();
+        SILICON_BLOCK = new Block(metalProps().requiresCorrectToolForDrops());
         regHandler.block("ex_pattern_provider", EX_PATTERN_PROVIDER, TileExPatternProvider.class, TileExPatternProvider::new);
         regHandler.block("ex_interface", EX_INTERFACE, TileExInterface.class, TileExInterface::new);
         regHandler.block("wireless_connect", WIRELESS_CONNECTOR, TileWirelessConnector.class, TileWirelessConnector::new);
@@ -154,6 +159,7 @@ public class EAEItemAndBlock {
         regHandler.block("crystal_fixer", CRYSTAL_FIXER, TileCrystalFixer.class, TileCrystalFixer::new);
         regHandler.block("ex_io_port", EX_IO_PORT, TileExIOPort.class, TileExIOPort::new);
         regHandler.block("fishbig", FISHBIG);
+        regHandler.block("silicon_block", SILICON_BLOCK);
         regHandler.item("ex_pattern_provider_part", EX_PATTERN_PROVIDER_PART);
         regHandler.item("ex_interface_part", EX_INTERFACE_PART);
         regHandler.item("infinity_cell", INFINITY_CELL);
