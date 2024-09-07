@@ -12,6 +12,13 @@ base {
 
 repositories {
 	maven {
+		name = "TerraformersMC"
+		url = "https://maven.terraformersmc.com/"
+		content {
+			includeGroup "dev.emi"
+		}
+	}
+	maven {
 		url = "https://cursemaven.com"
 		content {
 			includeGroup "curse.maven"
@@ -78,6 +85,8 @@ dependencies {
 	modImplementation "teamreborn:energy:${project.tr_energy_version}"
 	modImplementation "dev.toma.configuration:configuration-fabric-1.20.1:2.2.0"
 	modCompileOnly "curse.maven:applied-energistics-2-wireless-terminals-459929:4936436"
+	modCompileOnly "dev.emi:emi-fabric:${emi_version}:api"
+	modLocalRuntime "dev.emi:emi-fabric:${emi_version}"
 	include "dev.toma.configuration:configuration-fabric-1.20.1:2.2.0"
 
 	modCompileOnly("curse.maven:jade-324717:4586193") {

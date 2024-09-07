@@ -1,0 +1,12 @@
+{
+  "type": "extendedae:circuit_cutter",
+  "input": {
+    "ingredient": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "output": {
+    "count": 9,
+    "item": "ae2:printed_engineering_processor"
+  }
+}

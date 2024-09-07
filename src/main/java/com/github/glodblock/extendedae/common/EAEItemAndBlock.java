@@ -4,6 +4,7 @@ import appeng.items.parts.PartItem;
 import appeng.items.tools.powered.WirelessTerminalItem;
 import com.github.glodblock.extendedae.EAE;
 import com.github.glodblock.extendedae.common.blocks.BlockCaner;
+import com.github.glodblock.extendedae.common.blocks.BlockCircuitCutter;
 import com.github.glodblock.extendedae.common.blocks.BlockCrystalFixer;
 import com.github.glodblock.extendedae.common.blocks.BlockExCharger;
 import com.github.glodblock.extendedae.common.blocks.BlockExDrive;
@@ -41,6 +42,7 @@ import com.github.glodblock.extendedae.common.parts.PartTagStorageBus;
 import com.github.glodblock.extendedae.common.parts.PartThresholdExportBus;
 import com.github.glodblock.extendedae.common.parts.PartThresholdLevelEmitter;
 import com.github.glodblock.extendedae.common.tileentities.TileCaner;
+import com.github.glodblock.extendedae.common.tileentities.TileCircuitCutter;
 import com.github.glodblock.extendedae.common.tileentities.TileCrystalFixer;
 import com.github.glodblock.extendedae.common.tileentities.TileExCharger;
 import com.github.glodblock.extendedae.common.tileentities.TileExDrive;
@@ -95,6 +97,7 @@ public class EAEItemAndBlock {
     public static PartItem<PartPreciseExportBus> PRECISE_EXPORT_BUS;
     public static PartItem<PartPreciseStorageBus> PRECISE_STORAGE_BUS;
     public static PartItem<PartThresholdExportBus> THRESHOLD_EXPORT_BUS;
+    public static BlockCircuitCutter CIRCUIT_CUTTER;
     public static BlockFishbig FISHBIG;
 
     public static void init(RegistryHandler regHandler) {
@@ -146,6 +149,7 @@ public class EAEItemAndBlock {
         PRECISE_STORAGE_BUS = new PartItem<>(new Item.Properties(), PartPreciseStorageBus.class, PartPreciseStorageBus::new);
         THRESHOLD_EXPORT_BUS = new PartItem<>(new Item.Properties(), PartThresholdExportBus.class, PartThresholdExportBus::new);
         FISHBIG = new BlockFishbig();
+        CIRCUIT_CUTTER = new BlockCircuitCutter();
         SILICON_BLOCK = new Block(metalProps().requiresCorrectToolForDrops());
         regHandler.block("ex_pattern_provider", EX_PATTERN_PROVIDER, TileExPatternProvider.class, TileExPatternProvider::new);
         regHandler.block("ex_interface", EX_INTERFACE, TileExInterface.class, TileExInterface::new);
@@ -158,6 +162,7 @@ public class EAEItemAndBlock {
         regHandler.block("caner", CANER, TileCaner.class, TileCaner::new);
         regHandler.block("crystal_fixer", CRYSTAL_FIXER, TileCrystalFixer.class, TileCrystalFixer::new);
         regHandler.block("ex_io_port", EX_IO_PORT, TileExIOPort.class, TileExIOPort::new);
+        regHandler.block("circuit_cutter", CIRCUIT_CUTTER, TileCircuitCutter.class, TileCircuitCutter::new);
         regHandler.block("fishbig", FISHBIG);
         regHandler.block("silicon_block", SILICON_BLOCK);
         regHandler.item("ex_pattern_provider_part", EX_PATTERN_PROVIDER_PART);

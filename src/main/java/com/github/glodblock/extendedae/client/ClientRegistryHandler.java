@@ -28,6 +28,7 @@ import com.github.glodblock.extendedae.client.gui.GuiTagStorageBus;
 import com.github.glodblock.extendedae.client.gui.GuiThresholdLevelEmitter;
 import com.github.glodblock.extendedae.client.gui.GuiWirelessConnector;
 import com.github.glodblock.extendedae.client.gui.GuiCaner;
+import com.github.glodblock.extendedae.client.gui.GuiCircuitCutter;
 import com.github.glodblock.extendedae.client.gui.GuiWirelessExPAT;
 import com.github.glodblock.extendedae.client.gui.pattern.GuiCraftingPattern;
 import com.github.glodblock.extendedae.client.gui.pattern.GuiProcessingPattern;
@@ -35,6 +36,7 @@ import com.github.glodblock.extendedae.client.gui.pattern.GuiSmithingTablePatter
 import com.github.glodblock.extendedae.client.gui.pattern.GuiStonecuttingPattern;
 import com.github.glodblock.extendedae.client.model.ExDriveModel;
 import com.github.glodblock.extendedae.client.model.ExPlaneModel;
+import com.github.glodblock.extendedae.client.render.tesr.CircuitCutterTESR;
 import com.github.glodblock.extendedae.client.render.tesr.CrystalFixerTESR;
 import com.github.glodblock.extendedae.client.render.tesr.ExChargerTESR;
 import com.github.glodblock.extendedae.client.render.tesr.ExDriveTESR;
@@ -43,15 +45,10 @@ import com.github.glodblock.extendedae.client.render.tesr.ExMolecularAssemblerTE
 import com.github.glodblock.extendedae.client.render.tesr.IngredientBufferTESR;
 import com.github.glodblock.extendedae.client.render.tesr.CanerTESR;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
-import com.github.glodblock.extendedae.common.tileentities.TileCaner;
-import com.github.glodblock.extendedae.common.tileentities.TileCrystalFixer;
-import com.github.glodblock.extendedae.common.tileentities.TileExCharger;
-import com.github.glodblock.extendedae.common.tileentities.TileExDrive;
-import com.github.glodblock.extendedae.common.tileentities.TileExInscriber;
-import com.github.glodblock.extendedae.common.tileentities.TileExMolecularAssembler;
-import com.github.glodblock.extendedae.common.tileentities.TileIngredientBuffer;
+import com.github.glodblock.extendedae.common.tileentities.*;
 import com.github.glodblock.extendedae.container.ContainerActiveFormationPlane;
 import com.github.glodblock.extendedae.container.ContainerCaner;
+import com.github.glodblock.extendedae.container.ContainerCircuitCutter;
 import com.github.glodblock.extendedae.container.ContainerExDrive;
 import com.github.glodblock.extendedae.container.ContainerExIOBus;
 import com.github.glodblock.extendedae.container.ContainerExIOPort;
@@ -125,6 +122,7 @@ public class ClientRegistryHandler {
         InitScreens.register(ContainerPreciseExportBus.TYPE, GuiPreciseExportBus::new, "/screens/precise_export_bus.json");
         InitScreens.register(ContainerPreciseStorageBus.TYPE, GuiPreciseStorageBus::new, "/screens/precise_storage_bus.json");
         InitScreens.register(ContainerThresholdExportBus.TYPE, GuiThresholdExportBus::new, "/screens/threshold_export_bus.json");
+        InitScreens.register(ContainerCircuitCutter.TYPE, GuiCircuitCutter::new, "/screens/circuit_cutter.json");
         MenuScreens.register(ContainerProcessingPattern.TYPE, GuiProcessingPattern::new);
         MenuScreens.register(ContainerCraftingPattern.TYPE, GuiCraftingPattern::new);
         MenuScreens.register(ContainerStonecuttingPattern.TYPE, GuiStonecuttingPattern::new);
@@ -144,6 +142,7 @@ public class ClientRegistryHandler {
         BlockEntityRenderers.register(FCUtil.getTileType(TileExCharger.class), ExChargerTESR::new);
         BlockEntityRenderers.register(FCUtil.getTileType(TileCaner.class), CanerTESR::new);
         BlockEntityRenderers.register(FCUtil.getTileType(TileCrystalFixer.class), CrystalFixerTESR::new);
+        BlockEntityRenderers.register(FCUtil.getTileType(TileCircuitCutter.class), CircuitCutterTESR::new);
         ModelLoadingRegistry.INSTANCE.registerResourceProvider(rm -> new SimpleModelLoader<>(EAE.id("block/ex_drive"), ExDriveModel::new));
         ModelLoadingRegistry.INSTANCE.registerResourceProvider(rm -> new SimpleModelLoader<>(EAE.id("part/active_formation_plane"), () -> new ExPlaneModel(EAE.id("part/active_formation_plane"))));
         ModelLoadingRegistry.INSTANCE.registerResourceProvider(rm -> new SimpleModelLoader<>(EAE.id("part/active_formation_plane_on"), () -> new ExPlaneModel(EAE.id("part/active_formation_plane_on"))));
@@ -154,6 +153,7 @@ public class ClientRegistryHandler {
         BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.EX_ASSEMBLER, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.INGREDIENT_BUFFER, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.FISHBIG, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(EAEItemAndBlock.CIRCUIT_CUTTER, RenderType.cutout());
     }
 
 }

@@ -50,6 +50,7 @@ import com.github.glodblock.extendedae.common.tileentities.TileIngredientBuffer;
 import com.github.glodblock.extendedae.config.EPPConfig;
 import com.github.glodblock.extendedae.container.ContainerActiveFormationPlane;
 import com.github.glodblock.extendedae.container.ContainerCaner;
+import com.github.glodblock.extendedae.container.ContainerCircuitCutter;
 import com.github.glodblock.extendedae.container.ContainerExDrive;
 import com.github.glodblock.extendedae.container.ContainerExIOBus;
 import com.github.glodblock.extendedae.container.ContainerExIOPort;
@@ -75,6 +76,8 @@ import com.github.glodblock.extendedae.container.pattern.ContainerCraftingPatter
 import com.github.glodblock.extendedae.container.pattern.ContainerProcessingPattern;
 import com.github.glodblock.extendedae.container.pattern.ContainerSmithingTablePattern;
 import com.github.glodblock.extendedae.container.pattern.ContainerStonecuttingPattern;
+import com.github.glodblock.extendedae.recipe.CircuitCutterRecipe;
+import com.github.glodblock.extendedae.recipe.CircuitCutterRecipeSerializer;
 import com.github.glodblock.extendedae.util.FCUtil;
 import com.github.glodblock.extendedae.xmod.wt.WTCommonLoad;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -131,6 +134,7 @@ public class RegistryHandler {
         this.onRegisterTileEntities();
         this.onRegisterContainer();
         this.onRegisterModels();
+        this.onRegisterRecipe();
         this.onRegisterRandomAPI();
         if (EAE.checkMod("ae2wtlib")) {
             WTCommonLoad.init();
@@ -165,6 +169,11 @@ public class RegistryHandler {
         }
     }
 
+    private void onRegisterRecipe() {
+        //Registry.register(BuiltInRegistries.RECIPE_TYPE, CircuitCutterRecipe.TYPE_ID, CircuitCutterRecipe.TYPE);
+        Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, CircuitCutterRecipe.TYPE_ID, CircuitCutterRecipeSerializer.INSTANCE);
+    }
+
     private void onRegisterContainer() {
         Registry.register(BuiltInRegistries.MENU, ContainerProcessingPattern.ID, ContainerProcessingPattern.TYPE);
         Registry.register(BuiltInRegistries.MENU, ContainerCraftingPattern.ID, ContainerCraftingPattern.TYPE);
@@ -194,6 +203,7 @@ public class RegistryHandler {
         registerMenuType("precise_export_bus", ContainerPreciseExportBus.TYPE);
         registerMenuType("precise_storage_bus", ContainerPreciseStorageBus.TYPE);
         registerMenuType("threshold_export_bus", ContainerThresholdExportBus.TYPE);
+        registerMenuType("circuit_cutter", ContainerCircuitCutter.TYPE);
         if (EAE.checkMod("ae2wtlib")) {
             WTCommonLoad.container();
         }
@@ -275,6 +285,7 @@ public class RegistryHandler {
         Upgrades.add(AEItems.CAPACITY_CARD, EAEItemAndBlock.THRESHOLD_EXPORT_BUS, 5);
         Upgrades.add(AEItems.REDSTONE_CARD, EAEItemAndBlock.THRESHOLD_EXPORT_BUS, 1);
         Upgrades.add(AEItems.SPEED_CARD, EAEItemAndBlock.THRESHOLD_EXPORT_BUS, 4);
+        Upgrades.add(AEItems.SPEED_CARD, EAEItemAndBlock.CIRCUIT_CUTTER, 4);
     }
 
     @SuppressWarnings("all")

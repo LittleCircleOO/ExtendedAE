@@ -12,6 +12,7 @@
     "extendedae:caner",
     "extendedae:crystal_fixer",
     "extendedae:ex_io_port",
+    "extendedae:circuit_cutter",
     "extendedae:fishbig",
     "extendedae:silicon_block"
   ]

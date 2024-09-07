@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "megacells"
+      ]
+    }
+  ],
+  "type": "extendedae:circuit_cutter",
+  "input": {
+    "ingredient": {
+      "tag": "forge:storage_blocks/sky_steel"
+    }
+  },
+  "output": {
+    "count": 9,
+    "item": "megacells:printed_accumulation_processor"
+  }
+}

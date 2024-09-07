@@ -8,6 +8,7 @@ import appeng.core.definitions.AEParts;
 import appeng.datagen.providers.tags.ConventionTags;
 import com.github.glodblock.extendedae.EAE;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
+import com.github.glodblock.extendedae.recipe.CircuitCutterRecipeBuilder;
 import com.github.glodblock.extendedae.util.EPPTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
@@ -449,6 +451,52 @@ public class EAERecipeProvider extends FabricRecipeProvider {
                 .requires(EPPTags.SILICON_BLOCK)
                 .unlockedBy(C, has(EPPTags.SILICON_BLOCK))
                 .save(c, EAE.id("silicon_decompress"));
+
+        // Circuit Cutter
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, EAEItemAndBlock.CIRCUIT_CUTTER)
+                .pattern("CEL")
+                .pattern("PSP")
+                .pattern("YUY")
+                .define('C', AEItems.CALCULATION_PROCESSOR_PRESS)
+                .define('E', AEItems.ENGINEERING_PROCESSOR_PRESS)
+                .define('L', AEItems.LOGIC_PROCESSOR_PRESS)
+                .define('P', AEItems.ENGINEERING_PROCESSOR)
+                .define('S', AEItems.SILICON_PRESS)
+                .define('Y', EAEItemAndBlock.EX_INSCRIBER)
+                .define('U', Items.STONECUTTER)
+                .unlockedBy(C, has(EAEItemAndBlock.EX_INSCRIBER))
+                .save(c, EAE.id("circuit_cutter"));
+
+        circuit(c);
+
+    }
+
+    private void circuit(@NotNull Consumer<FinishedRecipe> c){
+        CircuitCutterRecipeBuilder
+                .cut(AEItems.ENGINEERING_PROCESSOR_PRINT, 9)
+                //.input(CommonTags.STORAGE_BLOCKS_DIAMOND)
+                .input(Items.DIAMOND_BLOCK)
+                .save(c, EAE.id("cutter/engineering_processor"));
+        CircuitCutterRecipeBuilder
+                .cut(AEItems.LOGIC_PROCESSOR_PRINT, 9)
+                //.input(CommonTags.STORAGE_BLOCKS_GOLD)
+                .input(Items.GOLD_BLOCK)
+                .save(c, EAE.id("cutter/logic_processor"));
+        CircuitCutterRecipeBuilder
+                .cut(AEItems.CALCULATION_PROCESSOR_PRINT, 4)
+                .input(AEBlocks.QUARTZ_BLOCK)
+                .save(c, EAE.id("cutter/calculation_processor"));
+        CircuitCutterRecipeBuilder
+                .cut(AEItems.SILICON_PRINT, 9)
+                .input(EPPTags.SILICON_BLOCK)
+                .save(c, EAE.id("cutter/silicon_print"));
+        // Troll
+        CircuitCutterRecipeBuilder
+                .cut(Items.PUFFERFISH, 8)
+                .input(EAEItemAndBlock.FISHBIG)
+                .save(c, EAE.id("cutter/fishbig_destroy"));
+
     }
 
 }
