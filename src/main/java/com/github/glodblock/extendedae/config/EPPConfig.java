@@ -47,6 +47,12 @@ public class EPPConfig {
     @Configurable.DecimalRange(min = 10, max = 10000)
     public double wirelessConnectorMaxRange = 1000;
 
+    @Configurable
+    @Configurable.Comment("Pattern modifier multipliers")
+    @Configurable.Range(min = 1)
+    @Configurable.FixedSize
+    public int[] patternModifierMultipliers = new int[]{2, 3, 5, 7};
+
     public List<Item> getInfCellItem() {
         return Arrays.stream(infCellTypeID).parallel().filter(
                 s -> FCUtil.checkInvalidRL(s, BuiltInRegistries.ITEM)
