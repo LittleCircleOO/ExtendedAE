@@ -144,5 +144,6 @@
   "config.jade.plugin_extendedae.jade_wireless": "ME无线连接器 颜色",
   "key.epp.viewpattern": "查看样板配置",
   "key.epp.category": "AE2扩展",
-  "jade.crystal_chamber.progress": "进度：%s"
+  "jade.crystal_chamber.progress": "进度：%s",
+  "emi.extendedae.category.cutter": "电路切片器"
 }

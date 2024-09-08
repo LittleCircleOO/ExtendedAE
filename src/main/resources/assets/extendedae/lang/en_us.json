@@ -149,5 +149,6 @@
   "config.extendedae.option.infCellCost": "Infinity Cell Energy Cost",
   "config.extendedae.option.infCellTypeID": "Infinity Cell Type",
   "config.extendedae.option.wirelessConnectorMaxRange": "Wireless Connector Range",
-  "config.extendedae.option.tapeWhitelist": "ME Packing Tape List"
+  "config.extendedae.option.tapeWhitelist": "ME Packing Tape List",
+  "emi.extendedae.category.cutter": "Circuit Slicer"
 }

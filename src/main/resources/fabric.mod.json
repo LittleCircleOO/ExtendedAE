@@ -33,6 +33,9 @@
 		],
 		"jade": [
 			"com.github.glodblock.extendedae.xmod.jade.JadePlugin"
+		],
+		"emi": [
+			"com.github.glodblock.extendedae.xmod.emi.EMIPlugin"
 		]
 	},
 	"mixins": [

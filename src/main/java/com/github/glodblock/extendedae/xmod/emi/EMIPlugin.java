@@ -1,5 +1,6 @@
 package com.github.glodblock.extendedae.xmod.emi;
 
+import com.github.glodblock.extendedae.EAE;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
 import com.github.glodblock.extendedae.recipe.CircuitCutterRecipe;
 import com.github.glodblock.extendedae.xmod.emi.recipes.EMICircuitCutterRecipe;
@@ -8,6 +9,7 @@ import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiInfoRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
+import dev.emi.emi.api.stack.Comparison;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
@@ -25,11 +27,15 @@ public class EMIPlugin implements EmiPlugin {
     @Override
     public void register(EmiRegistry registry) {
         //registry.addGenericStackProvider(new PatternSlotProvider());
-        //registry.addWorkstation(Ae2ReflectClient.getInscribeRecipe(), EmiStack.of(EAEItemAndBlock.EX_INSCRIBER));
-        //registry.addWorkstation(Ae2ReflectClient.getChargerRecipe(), EmiStack.of(EAEItemAndBlock.EX_CHARGER));
-        /*registry.setDefaultComparison(EAEItemAndBlock.INFINITY_CELL,
+        if (EAE.checkMod("extra-mod-integrations")) {
+            var CHARGER_CATEGORY = com.kneelawk.extramodintegrations.appeng.AE2Integration.CHARGER_CATEGORY;
+            var INSCRIBER_CATEGORY = com.kneelawk.extramodintegrations.appeng.AE2Integration.INSCRIBER_CATEGORY;
+            registry.addWorkstation(INSCRIBER_CATEGORY, EmiStack.of(EAEItemAndBlock.EX_INSCRIBER));
+            registry.addWorkstation(CHARGER_CATEGORY, EmiStack.of(EAEItemAndBlock.EX_CHARGER));
+        }
+        registry.setDefaultComparison(EAEItemAndBlock.INFINITY_CELL,
                 Comparison.compareData(s -> EAEItemAndBlock.INFINITY_CELL.getRecord(s.getItemStack()))
-        );*/
+        );
         registry.addCategory(EMICircuitCutterRecipe.CATEGORY);
         registry.addWorkstation(EMICircuitCutterRecipe.CATEGORY, EmiStack.of(EAEItemAndBlock.CIRCUIT_CUTTER));
         adaptRecipeType(registry, CircuitCutterRecipe.TYPE, EMICircuitCutterRecipe::new);
