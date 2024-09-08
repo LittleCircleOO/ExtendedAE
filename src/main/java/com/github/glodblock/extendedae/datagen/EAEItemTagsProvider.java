@@ -23,6 +23,9 @@ public class EAEItemTagsProvider extends FabricTagProvider.ItemTagProvider {
         this.getOrCreateTagBuilder(EPPTags.EX_INTERFACE)
                 .add(EAEItemAndBlock.EX_INTERFACE_PART)
                 .add(EAEItemAndBlock.EX_INTERFACE.asItem());
+        this.getOrCreateTagBuilder(EPPTags.OVERSIZE_INTERFACE)
+                .add(EAEItemAndBlock.OVERSIZE_INTERFACE_PART)
+                .add(EAEItemAndBlock.OVERSIZE_INTERFACE.asItem());
         this.getOrCreateTagBuilder(EPPTags.SILICON_BLOCK)
                 .add(EAEItemAndBlock.SILICON_BLOCK.asItem());
         this.getOrCreateTagBuilder(CommonTags.STORAGE_BLOCKS)

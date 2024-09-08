@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "ae2:annihilation_core"
+    },
+    "B": {
+      "item": "extendedae:ingredient_buffer"
+    },
+    "C": {
+      "item": "ae2:capacity_card"
+    },
+    "F": {
+      "item": "ae2:formation_core"
+    },
+    "I": {
+      "item": "extendedae:ex_interface"
+    },
+    "P": {
+      "item": "ae2:calculation_processor"
+    }
+  },
+  "pattern": [
+    "BPB",
+    "AIF",
+    "ACF"
+  ],
+  "result": {
+    "item": "extendedae:oversize_interface"
+  },
+  "show_notification": true
+}

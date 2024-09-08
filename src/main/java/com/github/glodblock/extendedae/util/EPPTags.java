@@ -11,5 +11,6 @@ public class EPPTags {
     public static final TagKey<Item> EX_PATTERN_PROVIDER = TagKey.create(Registries.ITEM, EAE.id("extended_pattern_provider"));
     public static final TagKey<Item> EX_INTERFACE = TagKey.create(Registries.ITEM, EAE.id("extended_interface"));
     public static final TagKey<Item> SILICON_BLOCK = TagKey.create(Registries.ITEM, new ResourceLocation("c", "storage_blocks/silicon"));
+    public static final TagKey<Item> OVERSIZE_INTERFACE = TagKey.create(Registries.ITEM, EAE.id("oversize_interface"));
 
 }

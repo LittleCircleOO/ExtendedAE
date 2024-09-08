@@ -34,6 +34,7 @@ import com.github.glodblock.extendedae.common.parts.PartExPatternAccessTerminal;
 import com.github.glodblock.extendedae.common.parts.PartExPatternProvider;
 import com.github.glodblock.extendedae.common.parts.PartModExportBus;
 import com.github.glodblock.extendedae.common.parts.PartModStorageBus;
+import com.github.glodblock.extendedae.common.parts.PartOversizeInterface;
 import com.github.glodblock.extendedae.common.parts.PartPreciseExportBus;
 import com.github.glodblock.extendedae.common.parts.PartPreciseStorageBus;
 import com.github.glodblock.extendedae.common.parts.PartTagExportBus;
@@ -204,6 +205,7 @@ public class RegistryHandler {
         registerMenuType("precise_storage_bus", ContainerPreciseStorageBus.TYPE);
         registerMenuType("threshold_export_bus", ContainerThresholdExportBus.TYPE);
         registerMenuType("circuit_cutter", ContainerCircuitCutter.TYPE);
+        registerMenuType("oversize_interface", ContainerExInterface.TYPE_OVERSIZE);
         if (EAE.checkMod("ae2wtlib")) {
             WTCommonLoad.container();
         }
@@ -249,6 +251,10 @@ public class RegistryHandler {
         Upgrades.add(AEItems.CRAFTING_CARD, EAEItemAndBlock.EX_INTERFACE.asItem(), 1, "gui.extendedae.ex_interface");
         Upgrades.add(AEItems.FUZZY_CARD, EAEItemAndBlock.EX_INTERFACE_PART.asItem(), 1, "gui.extendedae.ex_interface");
         Upgrades.add(AEItems.CRAFTING_CARD, EAEItemAndBlock.EX_INTERFACE_PART.asItem(), 1, "gui.extendedae.ex_interface");
+        Upgrades.add(AEItems.FUZZY_CARD, EAEItemAndBlock.OVERSIZE_INTERFACE, 1, "gui.extendedae.oversize_interface");
+        Upgrades.add(AEItems.CRAFTING_CARD, EAEItemAndBlock.OVERSIZE_INTERFACE, 1, "gui.extendedae.oversize_interface");
+        Upgrades.add(AEItems.FUZZY_CARD, EAEItemAndBlock.OVERSIZE_INTERFACE_PART, 1, "gui.extendedae.oversize_interface");
+        Upgrades.add(AEItems.CRAFTING_CARD, EAEItemAndBlock.OVERSIZE_INTERFACE_PART, 1, "gui.extendedae.oversize_interface");
         Upgrades.add(AEItems.CAPACITY_CARD, EAEItemAndBlock.EX_EXPORT_BUS, 5, "group.ex_io_bus_part");
         Upgrades.add(AEItems.REDSTONE_CARD, EAEItemAndBlock.EX_EXPORT_BUS, 1, "group.ex_io_bus_part");
         Upgrades.add(AEItems.SPEED_CARD, EAEItemAndBlock.EX_EXPORT_BUS, 4, "group.ex_io_bus_part");
@@ -297,6 +303,14 @@ public class RegistryHandler {
         PartApiLookup.register(
                 MEStorage.SIDED, (part, context) -> part.getInterfaceLogic().getInventory(),
                 PartExInterface.class
+        );
+        PartApiLookup.register(
+                GenericInternalInventory.SIDED, (part, context) -> part.getInterfaceLogic().getStorage(),
+                PartOversizeInterface.class
+        );
+        PartApiLookup.register(
+                MEStorage.SIDED, (part, context) -> part.getInterfaceLogic().getInventory(),
+                PartOversizeInterface.class
         );
         PartApiLookup.register(
                 GenericInternalInventory.SIDED, (part, context) -> part.getLogic().getReturnInv(),
@@ -351,6 +365,7 @@ public class RegistryHandler {
         PartModels.registerModels(PartPreciseExportBus.MODELS);
         PartModels.registerModels(PartPreciseStorageBus.MODEL_BASE);
         PartModels.registerModels(PartThresholdExportBus.MODELS);
+        PartModels.registerModels(PartOversizeInterface.MODELS);
     }
 
     private void onRegisterRandomAPI() {

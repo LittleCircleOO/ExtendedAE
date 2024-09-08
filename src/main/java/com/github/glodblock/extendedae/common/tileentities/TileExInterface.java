@@ -12,6 +12,7 @@ import com.github.glodblock.extendedae.util.FCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class TileExInterface extends InterfaceBlockEntity implements IPage {
@@ -20,6 +21,10 @@ public class TileExInterface extends InterfaceBlockEntity implements IPage {
 
     public TileExInterface(BlockPos pos, BlockState blockState) {
         super(FCUtil.getTileType(TileExInterface.class, TileExInterface::new, EAEItemAndBlock.EX_INTERFACE), pos, blockState);
+    }
+
+    public TileExInterface(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+        super(type, pos, blockState);
     }
 
     @Override

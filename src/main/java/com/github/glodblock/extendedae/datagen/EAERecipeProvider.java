@@ -468,6 +468,32 @@ public class EAERecipeProvider extends FabricRecipeProvider {
                 .unlockedBy(C, has(EAEItemAndBlock.EX_INSCRIBER))
                 .save(c, EAE.id("circuit_cutter"));
 
+        // Oversize Interface
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, EAEItemAndBlock.OVERSIZE_INTERFACE)
+                .pattern("BPB")
+                .pattern("AIF")
+                .pattern("ACF")
+                .define('I', EAEItemAndBlock.EX_INTERFACE)
+                .define('P', AEItems.CALCULATION_PROCESSOR)
+                .define('A', AEItems.ANNIHILATION_CORE)
+                .define('F', AEItems.FORMATION_CORE)
+                .define('B', EAEItemAndBlock.INGREDIENT_BUFFER)
+                .define('C', AEItems.CAPACITY_CARD)
+                .unlockedBy(C, has(EAEItemAndBlock.OVERSIZE_INTERFACE))
+                .save(c, EAE.id("oversize_interface"));
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, EAEItemAndBlock.OVERSIZE_INTERFACE_PART)
+                .requires(EAEItemAndBlock.OVERSIZE_INTERFACE)
+                .unlockedBy(C, has(EAEItemAndBlock.OVERSIZE_INTERFACE))
+                .save(c, EAE.id("oversize_interface_part"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, EAEItemAndBlock.OVERSIZE_INTERFACE)
+                .requires(EAEItemAndBlock.OVERSIZE_INTERFACE_PART)
+                .unlockedBy(C, has(EAEItemAndBlock.OVERSIZE_INTERFACE_PART))
+                .save(c, EAE.id("oversize_interface_alt"));
+
         circuit(c);
 
     }

@@ -4,6 +4,7 @@ import appeng.api.behaviors.StackTransferContext;
 import appeng.api.networking.IGrid;
 import appeng.api.networking.energy.IEnergyService;
 import appeng.api.networking.storage.IStorageService;
+import appeng.api.stacks.AEKey;
 import appeng.api.storage.cells.CellState;
 import appeng.api.storage.cells.StorageCell;
 import appeng.api.upgrades.IUpgradeInventory;
@@ -11,11 +12,13 @@ import appeng.blockentity.AEBaseBlockEntity;
 import appeng.blockentity.storage.DriveBlockEntity;
 import appeng.blockentity.storage.IOPortBlockEntity;
 import appeng.crafting.pattern.AECraftingPattern;
+import appeng.helpers.InterfaceLogic;
 import appeng.helpers.patternprovider.PatternContainer;
 import appeng.parts.AEBasePart;
 import appeng.parts.automation.AbstractLevelEmitterPart;
 import appeng.parts.automation.ExportBusPart;
 import appeng.parts.automation.IOBusPart;
+import appeng.util.ConfigInventory;
 import appeng.util.inv.AppEngInternalInventory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -39,12 +42,16 @@ public class Ae2Reflect {
     private static final Field fIOPortBlockEntity_inputCells;
     private static final Field fIOPortBlockEntity_upgrades;
     private static final Field fAECraftingPattern_recipe;
+    private static final Field fInterfaceLogic_config;
+    private static final Field fInterfaceLogic_storage;
     private static final Method mDriveBlockEntity_updateClientSideState;
     private static final Method mAECraftingPattern_getCompressedIndexFromSparse;
     private static final Method mIOPortBlockEntity_transferContents;
     private static final Method mIOPortBlockEntity_moveSlot;
     private static final Method mIOBusPart_updateState;
     private static final Method mExportBusPart_createTransferContext;
+    private static final Method mInterfaceLogic_onConfigRowChanged;
+    private static final Method mInterfaceLogic_onStorageChanged;
 
     static {
         try {
@@ -59,12 +66,16 @@ public class Ae2Reflect {
             fIOPortBlockEntity_inputCells = reflectField(IOPortBlockEntity.class, "inputCells");
             fIOPortBlockEntity_upgrades = reflectField(IOPortBlockEntity.class, "upgrades");
             fAECraftingPattern_recipe = reflectField(AECraftingPattern.class, "recipe");
+            fInterfaceLogic_config = reflectField(InterfaceLogic.class, "config");
+            fInterfaceLogic_storage = reflectField(InterfaceLogic.class, "storage");
             mDriveBlockEntity_updateClientSideState = reflectMethod(DriveBlockEntity.class, "updateClientSideState");
             mAECraftingPattern_getCompressedIndexFromSparse = reflectMethod(AECraftingPattern.class, "getCompressedIndexFromSparse", int.class);
             mIOPortBlockEntity_transferContents = reflectMethod(IOPortBlockEntity.class, "transferContents", IGrid.class, StorageCell.class, long.class);
             mIOPortBlockEntity_moveSlot = reflectMethod(IOPortBlockEntity.class, "moveSlot", int.class);
             mIOBusPart_updateState = reflectMethod(IOBusPart.class, "updateState");
             mExportBusPart_createTransferContext = reflectMethod(ExportBusPart.class, "createTransferContext", IStorageService.class, IEnergyService.class);
+            mInterfaceLogic_onConfigRowChanged = reflectMethod(InterfaceLogic.class, "onConfigRowChanged");
+            mInterfaceLogic_onStorageChanged = reflectMethod(InterfaceLogic.class, "onStorageChanged");
         } catch (Exception e) {
             throw new IllegalStateException("Failed to initialize AE2 reflection hacks!", e);
         }
@@ -211,6 +222,22 @@ public class Ae2Reflect {
 
     public static CraftingRecipe getCraftRecipe(AECraftingPattern owner) {
         return readField(owner, fAECraftingPattern_recipe);
+    }
+
+    public static void setInterfaceStorage(InterfaceLogic owner, ConfigInventory storage) {
+        writeField(owner, fInterfaceLogic_storage, storage);
+    }
+
+    public static void setInterfaceConfig(InterfaceLogic owner, ConfigInventory config) {
+        writeField(owner, fInterfaceLogic_config, config);
+    }
+
+    public static void onInterfaceConfigChange(InterfaceLogic owner) {
+        executeMethod(owner, mInterfaceLogic_onConfigRowChanged);
+    }
+
+    public static void onInterfaceStorageChange(InterfaceLogic owner) {
+        executeMethod(owner, mInterfaceLogic_onStorageChanged);
     }
 
 }

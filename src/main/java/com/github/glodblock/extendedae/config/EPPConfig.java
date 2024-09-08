@@ -53,6 +53,12 @@ public class EPPConfig {
     @Configurable.FixedSize
     public int[] patternModifierMultipliers = new int[]{2, 3, 5, 7};
 
+    @Configurable
+    @Configurable.Comment("Size multiplier of oversize interface")
+    @Configurable.Synchronized
+    @Configurable.Range(min = 2, max = 4096)
+    public int oversizeMultiplier = 16;
+
     public List<Item> getInfCellItem() {
         return Arrays.stream(infCellTypeID).parallel().filter(
                 s -> FCUtil.checkInvalidRL(s, BuiltInRegistries.ITEM)

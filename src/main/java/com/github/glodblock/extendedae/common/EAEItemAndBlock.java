@@ -15,6 +15,7 @@ import com.github.glodblock.extendedae.common.blocks.BlockExMolecularAssembler;
 import com.github.glodblock.extendedae.common.blocks.BlockExPatternProvider;
 import com.github.glodblock.extendedae.common.blocks.BlockFishbig;
 import com.github.glodblock.extendedae.common.blocks.BlockIngredientBuffer;
+import com.github.glodblock.extendedae.common.blocks.BlockOversizeInterface;
 import com.github.glodblock.extendedae.common.blocks.BlockWirelessConnector;
 import com.github.glodblock.extendedae.common.items.InfinityCell;
 import com.github.glodblock.extendedae.common.items.ItemDriveUpgrade;
@@ -35,6 +36,7 @@ import com.github.glodblock.extendedae.common.parts.PartExPatternAccessTerminal;
 import com.github.glodblock.extendedae.common.parts.PartExPatternProvider;
 import com.github.glodblock.extendedae.common.parts.PartModExportBus;
 import com.github.glodblock.extendedae.common.parts.PartModStorageBus;
+import com.github.glodblock.extendedae.common.parts.PartOversizeInterface;
 import com.github.glodblock.extendedae.common.parts.PartPreciseExportBus;
 import com.github.glodblock.extendedae.common.parts.PartPreciseStorageBus;
 import com.github.glodblock.extendedae.common.parts.PartTagExportBus;
@@ -52,6 +54,7 @@ import com.github.glodblock.extendedae.common.tileentities.TileExInterface;
 import com.github.glodblock.extendedae.common.tileentities.TileExMolecularAssembler;
 import com.github.glodblock.extendedae.common.tileentities.TileExPatternProvider;
 import com.github.glodblock.extendedae.common.tileentities.TileIngredientBuffer;
+import com.github.glodblock.extendedae.common.tileentities.TileOversizeInterface;
 import com.github.glodblock.extendedae.common.tileentities.TileWirelessConnector;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -98,6 +101,8 @@ public class EAEItemAndBlock {
     public static PartItem<PartPreciseStorageBus> PRECISE_STORAGE_BUS;
     public static PartItem<PartThresholdExportBus> THRESHOLD_EXPORT_BUS;
     public static BlockCircuitCutter CIRCUIT_CUTTER;
+    public static BlockOversizeInterface OVERSIZE_INTERFACE;
+    public static PartItem<PartOversizeInterface> OVERSIZE_INTERFACE_PART;
     public static BlockFishbig FISHBIG;
 
     public static void init(RegistryHandler regHandler) {
@@ -151,6 +156,8 @@ public class EAEItemAndBlock {
         FISHBIG = new BlockFishbig();
         CIRCUIT_CUTTER = new BlockCircuitCutter();
         SILICON_BLOCK = new Block(metalProps().requiresCorrectToolForDrops());
+        OVERSIZE_INTERFACE = new BlockOversizeInterface();
+        OVERSIZE_INTERFACE_PART = new PartItem<>(new Item.Properties(), PartOversizeInterface.class, PartOversizeInterface::new);
         regHandler.block("ex_pattern_provider", EX_PATTERN_PROVIDER, TileExPatternProvider.class, TileExPatternProvider::new);
         regHandler.block("ex_interface", EX_INTERFACE, TileExInterface.class, TileExInterface::new);
         regHandler.block("wireless_connect", WIRELESS_CONNECTOR, TileWirelessConnector.class, TileWirelessConnector::new);
@@ -163,6 +170,7 @@ public class EAEItemAndBlock {
         regHandler.block("crystal_fixer", CRYSTAL_FIXER, TileCrystalFixer.class, TileCrystalFixer::new);
         regHandler.block("ex_io_port", EX_IO_PORT, TileExIOPort.class, TileExIOPort::new);
         regHandler.block("circuit_cutter", CIRCUIT_CUTTER, TileCircuitCutter.class, TileCircuitCutter::new);
+        regHandler.block("oversize_interface", OVERSIZE_INTERFACE, TileOversizeInterface.class, TileOversizeInterface::new);
         regHandler.block("fishbig", FISHBIG);
         regHandler.block("silicon_block", SILICON_BLOCK);
         regHandler.item("ex_pattern_provider_part", EX_PATTERN_PROVIDER_PART);
@@ -190,6 +198,7 @@ public class EAEItemAndBlock {
         regHandler.item("precise_export_bus", PRECISE_EXPORT_BUS);
         regHandler.item("precise_storage_bus", PRECISE_STORAGE_BUS);
         regHandler.item("threshold_export_bus", THRESHOLD_EXPORT_BUS);
+        regHandler.item("oversize_interface_part", OVERSIZE_INTERFACE_PART);
     }
 
 }
