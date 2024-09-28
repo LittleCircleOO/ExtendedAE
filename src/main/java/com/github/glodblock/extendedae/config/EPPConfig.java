@@ -37,6 +37,7 @@ public class EPPConfig {
 
     @Configurable
     @Configurable.Comment("ME Infinity Cell types (item or fluid's id)")
+    @Configurable.Synchronized
     public String[] infCellTypeID = new String[] {
             "minecraft:water",
             "minecraft:cobblestone"
