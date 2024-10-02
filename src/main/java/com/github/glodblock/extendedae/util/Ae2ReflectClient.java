@@ -17,8 +17,6 @@ import java.util.List;
 
 public class Ae2ReflectClient {
 
-    private static final Field fEmiInscriberRecipe_CATEGORY;
-    private static final Field fEmiChargerRecipe_CATEGORY;
     private static final Field fInscriberRecipeCategory_ID;
     private static final Field fInscriberRecipeCategory_RECIPE_TYPE;
     private static final Field fNumberEntryWidget_buttons;
@@ -46,19 +44,6 @@ public class Ae2ReflectClient {
             } else {
                 fInscriberRecipeCategory_ID = null;
             }
-            if (EAE.checkMod("emi")) {
-                fEmiInscriberRecipe_CATEGORY = Ae2Reflect.reflectField(
-                        Class.forName("appeng.integration.modules.emi.EmiInscriberRecipe"),
-                        "CATEGORY"
-                );
-                fEmiChargerRecipe_CATEGORY = Ae2Reflect.reflectField(
-                        Class.forName("appeng.integration.modules.emi.EmiChargerRecipe"),
-                        "CATEGORY"
-                );
-            } else {
-                fEmiInscriberRecipe_CATEGORY = null;
-                fEmiChargerRecipe_CATEGORY = null;
-            }
             fNumberEntryWidget_buttons = Ae2Reflect.reflectField(NumberEntryWidget.class, "buttons");
         } catch (Exception e) {
             throw new IllegalStateException("Failed to initialize AE2 reflection hacks!", e);
@@ -72,14 +57,6 @@ public class Ae2ReflectClient {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public static EmiRecipeCategory getInscribeRecipeEMI() {
-        return Ae2Reflect.readField(null, fEmiInscriberRecipe_CATEGORY);
-    }
-
-    public static EmiRecipeCategory getChargerRecipeEMI() {
-        return Ae2Reflect.readField(null, fEmiChargerRecipe_CATEGORY);
     }
 
     public static RecipeType<InscriberRecipe> getInscribeRecipe() {
