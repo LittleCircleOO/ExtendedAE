@@ -2,32 +2,35 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
+    "1": {
       "item": "ae2:calculation_processor_press"
     },
-    "E": {
+    "2": {
       "item": "ae2:engineering_processor_press"
     },
-    "L": {
+    "3": {
       "item": "ae2:logic_processor_press"
     },
-    "P": {
-      "item": "ae2:engineering_processor"
-    },
-    "S": {
+    "4": {
       "item": "ae2:silicon_press"
     },
-    "U": {
+    "C": {
       "item": "minecraft:stonecutter"
     },
-    "Y": {
-      "item": "extendedae:ex_inscriber"
+    "G": {
+      "item": "ae2:quartz_glass"
+    },
+    "I": {
+      "tag": "c:iron_ingots"
+    },
+    "T": {
+      "item": "ae2:sky_stone_tank"
     }
   },
   "pattern": [
-    "CEL",
-    "PSP",
-    "YUY"
+    "IGI",
+    "1C2",
+    "3T4"
   ],
   "result": {
     "item": "extendedae:circuit_cutter"

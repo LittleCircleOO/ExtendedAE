@@ -440,46 +440,49 @@ public class EAERecipeProvider extends FabricRecipeProvider {
         // Silicon BLock
         ShapedRecipeBuilder
                 .shaped(RecipeCategory.MISC, EAEItemAndBlock.SILICON_BLOCK)
-                .pattern("SSS")
-                .pattern("SSS")
-                .pattern("SSS")
-                .define('S', ConventionTags.SILICON)
-                .unlockedBy(C, has(ConventionTags.SILICON))
+                .pattern("###")
+                .pattern("#S#")
+                .pattern("###")
+                .define('#', ConventionTags.SILICON)
+                .define('S', AEItems.SILICON)
+                .unlockedBy(C, has(AEItems.SILICON))
                 .save(c, EAE.id("silicon_block"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, AEItems.SILICON, 9)
-                .requires(EPPTags.SILICON_BLOCK)
-                .unlockedBy(C, has(EPPTags.SILICON_BLOCK))
+                .requires(EAEItemAndBlock.SILICON_BLOCK)
+                .unlockedBy(C, has(EAEItemAndBlock.SILICON_BLOCK))
                 .save(c, EAE.id("silicon_decompress"));
 
         // Circuit Cutter
         ShapedRecipeBuilder
                 .shaped(RecipeCategory.MISC, EAEItemAndBlock.CIRCUIT_CUTTER)
-                .pattern("CEL")
-                .pattern("PSP")
-                .pattern("YUY")
-                .define('C', AEItems.CALCULATION_PROCESSOR_PRESS)
-                .define('E', AEItems.ENGINEERING_PROCESSOR_PRESS)
-                .define('L', AEItems.LOGIC_PROCESSOR_PRESS)
-                .define('P', AEItems.ENGINEERING_PROCESSOR)
-                .define('S', AEItems.SILICON_PRESS)
-                .define('Y', EAEItemAndBlock.EX_INSCRIBER)
-                .define('U', Items.STONECUTTER)
-                .unlockedBy(C, has(EAEItemAndBlock.EX_INSCRIBER))
+                .pattern("IGI")
+                .pattern("1C2")
+                .pattern("3T4")
+                .define('I', ConventionTags.IRON_INGOT)
+                .define('G', AEBlocks.QUARTZ_GLASS)
+                .define('C', Blocks.STONECUTTER)
+                .define('T', AEBlocks.SKY_STONE_TANK)
+                .define('1', AEItems.CALCULATION_PROCESSOR_PRESS)
+                .define('2', AEItems.ENGINEERING_PROCESSOR_PRESS)
+                .define('3', AEItems.LOGIC_PROCESSOR_PRESS)
+                .define('4', AEItems.SILICON_PRESS)
+                .unlockedBy(C, has(Blocks.STONECUTTER))
                 .save(c, EAE.id("circuit_cutter"));
 
         // Oversize Interface
         ShapedRecipeBuilder
                 .shaped(RecipeCategory.MISC, EAEItemAndBlock.OVERSIZE_INTERFACE)
-                .pattern("BPB")
+                .pattern("ABF")
+                .pattern("LCE")
                 .pattern("AIF")
-                .pattern("ACF")
-                .define('I', EAEItemAndBlock.EX_INTERFACE)
-                .define('P', AEItems.CALCULATION_PROCESSOR)
                 .define('A', AEItems.ANNIHILATION_CORE)
-                .define('F', AEItems.FORMATION_CORE)
                 .define('B', EAEItemAndBlock.INGREDIENT_BUFFER)
-                .define('C', AEItems.CAPACITY_CARD)
+                .define('F', AEItems.FORMATION_CORE)
+                .define('L', AEItems.LOGIC_PROCESSOR)
+                .define('C', AEItems.CALCULATION_PROCESSOR)
+                .define('E', AEItems.ENGINEERING_PROCESSOR)
+                .define('I', EPPTags.EX_INTERFACE)
                 .unlockedBy(C, has(EAEItemAndBlock.OVERSIZE_INTERFACE))
                 .save(c, EAE.id("oversize_interface"));
 

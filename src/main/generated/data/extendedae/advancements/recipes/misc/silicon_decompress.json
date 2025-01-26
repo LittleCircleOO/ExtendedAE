@@ -5,7 +5,9 @@
       "conditions": {
         "items": [
           {
-            "tag": "c:storage_blocks/silicon"
+            "items": [
+              "extendedae:silicon_block"
+            ]
           }
         ]
       },

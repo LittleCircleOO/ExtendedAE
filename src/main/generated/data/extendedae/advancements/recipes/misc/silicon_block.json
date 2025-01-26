@@ -5,7 +5,9 @@
       "conditions": {
         "items": [
           {
-            "tag": "c:silicon"
+            "items": [
+              "ae2:silicon"
+            ]
           }
         ]
       },

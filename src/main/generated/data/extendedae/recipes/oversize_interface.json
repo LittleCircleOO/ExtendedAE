@@ -9,22 +9,25 @@
       "item": "extendedae:ingredient_buffer"
     },
     "C": {
-      "item": "ae2:capacity_card"
+      "item": "ae2:calculation_processor"
+    },
+    "E": {
+      "item": "ae2:engineering_processor"
     },
     "F": {
       "item": "ae2:formation_core"
     },
     "I": {
-      "item": "extendedae:ex_interface"
+      "tag": "extendedae:extended_interface"
     },
-    "P": {
-      "item": "ae2:calculation_processor"
+    "L": {
+      "item": "ae2:logic_processor"
     }
   },
   "pattern": [
-    "BPB",
-    "AIF",
-    "ACF"
+    "ABF",
+    "LCE",
+    "AIF"
   ],
   "result": {
     "item": "extendedae:oversize_interface"
