@@ -41,13 +41,7 @@ import com.github.glodblock.extendedae.common.parts.PartTagExportBus;
 import com.github.glodblock.extendedae.common.parts.PartTagStorageBus;
 import com.github.glodblock.extendedae.common.parts.PartThresholdExportBus;
 import com.github.glodblock.extendedae.common.parts.PartThresholdLevelEmitter;
-import com.github.glodblock.extendedae.common.tileentities.TileCaner;
-import com.github.glodblock.extendedae.common.tileentities.TileExCharger;
-import com.github.glodblock.extendedae.common.tileentities.TileExInscriber;
-import com.github.glodblock.extendedae.common.tileentities.TileExInterface;
-import com.github.glodblock.extendedae.common.tileentities.TileExMolecularAssembler;
-import com.github.glodblock.extendedae.common.tileentities.TileExPatternProvider;
-import com.github.glodblock.extendedae.common.tileentities.TileIngredientBuffer;
+import com.github.glodblock.extendedae.common.tileentities.*;
 import com.github.glodblock.extendedae.config.EPPConfig;
 import com.github.glodblock.extendedae.container.ContainerActiveFormationPlane;
 import com.github.glodblock.extendedae.container.ContainerAssemblerMatrix;
@@ -327,6 +321,14 @@ public class RegistryHandler {
         MEStorage.SIDED.registerForBlockEntity(
                 (blockEntity, context) -> blockEntity.getInterfaceLogic().getInventory(),
                 FCUtil.getTileType(TileExInterface.class)
+        );
+        GenericInternalInventory.SIDED.registerForBlockEntity(
+                (blockEntity, context) -> blockEntity.getInterfaceLogic().getStorage(),
+                FCUtil.getTileType(TileOversizeInterface.class)
+        );
+        MEStorage.SIDED.registerForBlockEntity(
+                (blockEntity, context) -> blockEntity.getInterfaceLogic().getInventory(),
+                FCUtil.getTileType(TileOversizeInterface.class)
         );
         ICraftingMachine.SIDED.registerSelf(FCUtil.getTileType(TileExMolecularAssembler.class));
         GenericInternalInventory.SIDED.registerForBlockEntity(
