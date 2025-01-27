@@ -1,12 +1,16 @@
 package com.github.glodblock.extendedae.common.tileentities.matrix;
+import appeng.api.config.Settings;
+import appeng.api.config.YesNo;
 import appeng.api.implementations.IPowerChannelState;
 import appeng.api.networking.GridFlags;
 import appeng.api.networking.IGridMultiblock;
 import appeng.api.networking.IGridNode;
 import appeng.api.networking.IGridNodeListener;
 import appeng.api.orientation.BlockOrientation;
+import appeng.api.util.IConfigManager;
 import appeng.blockentity.grid.AENetworkBlockEntity;
 import appeng.me.cluster.IAEMultiBlock;
+import appeng.util.ConfigManager;
 import appeng.util.iterators.ChainedIterator;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
 import com.github.glodblock.extendedae.common.blocks.matrix.BlockAssemblerMatrixBase;
@@ -28,6 +32,7 @@ import java.util.Iterator;
 import java.util.Set;
 public abstract class TileAssemblerMatrixBase extends AENetworkBlockEntity implements IAEMultiBlock<ClusterAssemblerMatrix>, IPowerChannelState {
     protected final CalculatorAssemblerMatrix calc = new CalculatorAssemblerMatrix(this);
+    protected final ConfigManager manager;
     protected boolean isCore = false;
     protected CompoundTag previousState = null;
     protected ClusterAssemblerMatrix cluster;
@@ -35,7 +40,14 @@ public abstract class TileAssemblerMatrixBase extends AENetworkBlockEntity imple
         super(type, pos, blockState);
         this.getMainNode().setFlags(GridFlags.MULTIBLOCK, GridFlags.REQUIRE_CHANNEL).addService(IGridMultiblock.class, this::getMultiblockNodes);
         this.getMainNode().setIdlePowerUsage(0);
+        this.manager = new ConfigManager(this::saveChanges);
+        this.manager.registerSetting(Settings.PATTERN_ACCESS_TERMINAL, YesNo.YES);
     }
+
+    public IConfigManager getConfigManager() {
+        return this.manager;
+    }
+
     public CompoundTag getPreviousState() {
         return this.previousState;
     }
@@ -106,15 +118,19 @@ public abstract class TileAssemblerMatrixBase extends AENetworkBlockEntity imple
     public void saveAdditional(CompoundTag data) {
         super.saveAdditional(data);
         data.putBoolean("core", this.isCore);
+        this.manager.writeToNBT(data);
     }
+
     @Override
     public void loadTag(CompoundTag data) {
         super.loadTag(data);
         this.setCore(data.getBoolean("core"));
+        this.manager.readFromNBT(data);
         if (this.isCore) {
             this.setPreviousState(data.copy());
         }
     }
+
     @Override
     public void disconnect(boolean update) {
         if (this.cluster != null) {

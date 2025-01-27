@@ -29,7 +29,7 @@ public class GuiPatternModifier extends AEBaseScreen<ContainerPatternModifier> {
 
     public GuiPatternModifier(ContainerPatternModifier menu, Inventory playerInventory, Component title, ScreenStyle style) {
         super(menu, playerInventory, title, style);
-        ActionEPPButton changeMode = new ActionEPPButton(b -> EAENetworkServer.INSTANCE.sendToServer(new CUpdatePage(() -> (this.menu.page + 1) % 3)), Icon.SCHEDULING_DEFAULT.getBlitter());
+        ActionEPPButton changeMode = new ActionEPPButton(b -> EAENetworkServer.INSTANCE.sendToServer(new CUpdatePage(() -> (this.menu.page + 1) % 3)), Icon.SCHEDULING_DEFAULT);
         this.clone = new ActionEPPButton(b -> EAENetworkServer.INSTANCE.sendToServer(new CGenericPacket("clone")), EPPIcon.RIGHT);
         changeMode.setMessage(Component.translatable("gui.extendedae.pattern_modifier.change"));
         this.clone.setMessage(Component.translatable("gui.extendedae.pattern_modifier.clone.desc"));

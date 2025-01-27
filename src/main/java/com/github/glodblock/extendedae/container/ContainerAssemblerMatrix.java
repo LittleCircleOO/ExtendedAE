@@ -1,4 +1,6 @@
 package com.github.glodblock.extendedae.container;
+import appeng.api.config.Settings;
+import appeng.api.config.YesNo;
 import appeng.api.inventories.InternalInventory;
 import appeng.helpers.InventoryAction;
 import appeng.menu.AEBaseMenu;
@@ -36,13 +38,24 @@ public class ContainerAssemblerMatrix extends AEBaseMenu implements IActionHolde
     private final Int2ReferenceMap<PatternSlotTracker> trackerMap = new Int2ReferenceOpenHashMap<>();
     private final TileAssemblerMatrixBase host;
     private int runningThreads = 0;
+    private int patternMode = 0;
+
     public ContainerAssemblerMatrix(int id, Inventory playerInventory, TileAssemblerMatrixBase host) {
         super(TYPE, id, playerInventory, host);
         this.actions.put("cancel", o -> cancel());
+        this.actions.put("pattern_mode", o -> setPatternShowMode((String) o[0]));
         this.host = host;
         this.setupPatternInventory();
         this.createPlayerInventorySlots(playerInventory);
     }
+
+    private void setPatternShowMode(String mode) {
+        try {
+            this.host.getCluster().broadcastConfig(Settings.PATTERN_ACCESS_TERMINAL, YesNo.valueOf(mode), null);
+        } catch (Throwable ignored) {
+        }
+    }
+
     private void cancel() {
         var cluster = this.host.getCluster();
         if (cluster != null && !cluster.isDestroyed()) {
@@ -175,6 +188,11 @@ public class ContainerAssemblerMatrix extends AEBaseMenu implements IActionHolde
             if (this.runningThreads != newRunningThreads) {
                 this.runningThreads = newRunningThreads;
                 EAENetworkServer.INSTANCE.sendTo(new SGenericPacket("running_update", newRunningThreads), player);
+            }
+            int newPatternMode = this.getHost().getConfigManager().getSetting(Settings.PATTERN_ACCESS_TERMINAL).ordinal();
+            if (this.patternMode != newPatternMode) {
+                this.patternMode = newPatternMode;
+                EAENetworkServer.INSTANCE.sendTo(new SGenericPacket("pattern_mode_update", newPatternMode), player);
             }
         }
     }
