@@ -78,7 +78,7 @@ dependencies {
 		officialMojangMappings()
 		parchment("org.parchmentmc.data:parchment-1.19.3:2023.02.05@zip")
 	}
-	modImplementation "appeng:appliedenergistics2-fabric:15.0.15"
+	modImplementation "appeng:appliedenergistics2-fabric:15.3.3"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "mezz.jei:jei-${project.jei_minecraft_version}-fabric:${project.jei_version}"

@@ -79,10 +79,10 @@ public class EPPConfig {
     @Configurable
     @Configurable.Comment("The AE device/part that can be packed by ME Packing Tape")
     public String[] tapeWhitelist = new String[] {
-            "expatternprovider:ex_interface_part",
-            "expatternprovider:ex_pattern_provider_part",
-            "expatternprovider:ex_interface",
-            "expatternprovider:ex_pattern_provider",
+            "extendedae:ex_interface_part",
+            "extendedae:ex_pattern_provider_part",
+            "extendedae:ex_interface",
+            "extendedae:ex_pattern_provider",
             "ae2:cable_interface",
             "ae2:cable_pattern_provider",
             "ae2:interface",

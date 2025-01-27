@@ -9,6 +9,7 @@ import com.github.glodblock.extendedae.network.packet.CPatternKey;
 import com.github.glodblock.extendedae.network.packet.CUpdatePage;
 import com.github.glodblock.extendedae.network.packet.IMessage;
 import com.github.glodblock.extendedae.network.packet.SAssemblerAnimation;
+import com.github.glodblock.extendedae.network.packet.SAssemblerMatrixUpdate;
 import com.github.glodblock.extendedae.network.packet.SExPatternInfo;
 import com.github.glodblock.extendedae.network.packet.SGenericPacket;
 import io.netty.buffer.Unpooled;
@@ -51,6 +52,7 @@ public class EAENetworkServer {
         }
         registerPacket(SExPatternInfo.class, SExPatternInfo::new);
         registerPacket(SAssemblerAnimation.class, SAssemblerAnimation::new);
+        registerPacket(SAssemblerMatrixUpdate.class, SAssemblerMatrixUpdate::new);
         registerPacket(SGenericPacket.class, SGenericPacket::new);
         registerPacket(CPatternKey.class, CPatternKey::new);
         registerPacket(CUpdatePage.class, CUpdatePage::new);

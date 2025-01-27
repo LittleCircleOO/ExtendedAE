@@ -5,7 +5,8 @@
   "mixins": [
     "MixinPatternAccessTermMenu",
     "config.MixinConfiguration",
-    "config.MixinFileWatchManager"
+    "config.MixinFileWatchManager",
+    "MixinSlot"
   ],
   "injectors": {
     "defaultRequire": 1

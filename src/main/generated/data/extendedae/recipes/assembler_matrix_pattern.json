@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "ae2:blue_lumen_paint_ball"
+    },
+    "G": {
+      "item": "extendedae:assembler_matrix_wall"
+    },
+    "I": {
+      "tag": "extendedae:extended_pattern_provider"
+    }
+  },
+  "pattern": [
+    "BIB",
+    "BGB",
+    "BIB"
+  ],
+  "result": {
+    "count": 2,
+    "item": "extendedae:assembler_matrix_pattern"
+  },
+  "show_notification": true
+}

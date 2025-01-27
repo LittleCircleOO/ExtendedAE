@@ -2,6 +2,7 @@ package com.github.glodblock.extendedae.datagen;
 
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.stacks.AEItemKey;
+import appeng.api.util.AEColor;
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
@@ -485,6 +486,62 @@ public class EAERecipeProvider extends FabricRecipeProvider {
                 .define('I', EPPTags.EX_INTERFACE)
                 .unlockedBy(C, has(EAEItemAndBlock.OVERSIZE_INTERFACE))
                 .save(c, EAE.id("oversize_interface"));
+
+        // Assembler Matrix
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, EAEItemAndBlock.ASSEMBLER_MATRIX_FRAME)
+                .pattern("BIB")
+                .pattern("IGI")
+                .pattern("BIB")
+                .define('B', Items.LAPIS_LAZULI)
+                .define('I', ConventionTags.IRON_INGOT)
+                .define('G', AEBlocks.QUARTZ_GLASS)
+                .unlockedBy(C, has(AEBlocks.QUARTZ_GLASS))
+                .save(c, EAE.id("assembler_matrix_frame"));
+
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, EAEItemAndBlock.ASSEMBLER_MATRIX_WALL)
+                .pattern("BIB")
+                .pattern("IGI")
+                .pattern("BIB")
+                .define('B', ConventionTags.SMART_CABLE)
+                .define('I', ConventionTags.NETHER_QUARTZ)
+                .define('G', AEItems.LOGIC_PROCESSOR)
+                .unlockedBy(C, has(AEItems.LOGIC_PROCESSOR))
+                .save(c, EAE.id("assembler_matrix_wall"));
+
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, EAEItemAndBlock.ASSEMBLER_MATRIX_SPEED, 2)
+                .pattern("BIB")
+                .pattern("BGB")
+                .pattern("BIB")
+                .define('B', AEItems.COLORED_LUMEN_PAINT_BALL.item(AEColor.RED))
+                .define('I', AEItems.SPEED_CARD)
+                .define('G', EAEItemAndBlock.ASSEMBLER_MATRIX_WALL)
+                .unlockedBy(C, has(EAEItemAndBlock.ASSEMBLER_MATRIX_WALL))
+                .save(c, EAE.id("assembler_matrix_speed"));
+
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, EAEItemAndBlock.ASSEMBLER_MATRIX_CRAFTER, 2)
+                .pattern("BIB")
+                .pattern("BGB")
+                .pattern("BIB")
+                .define('B', AEItems.COLORED_LUMEN_PAINT_BALL.item(AEColor.PURPLE))
+                .define('I', EAEItemAndBlock.EX_ASSEMBLER)
+                .define('G', EAEItemAndBlock.ASSEMBLER_MATRIX_WALL)
+                .unlockedBy(C, has(EAEItemAndBlock.ASSEMBLER_MATRIX_WALL))
+                .save(c, EAE.id("assembler_matrix_crafter"));
+
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, EAEItemAndBlock.ASSEMBLER_MATRIX_PATTERN, 2)
+                .pattern("BIB")
+                .pattern("BGB")
+                .pattern("BIB")
+                .define('B', AEItems.COLORED_LUMEN_PAINT_BALL.item(AEColor.BLUE))
+                .define('I', EPPTags.EX_PATTERN_PROVIDER)
+                .define('G', EAEItemAndBlock.ASSEMBLER_MATRIX_WALL)
+                .unlockedBy(C, has(EAEItemAndBlock.ASSEMBLER_MATRIX_WALL))
+                .save(c, EAE.id("assembler_matrix_pattern"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, EAEItemAndBlock.OVERSIZE_INTERFACE_PART)

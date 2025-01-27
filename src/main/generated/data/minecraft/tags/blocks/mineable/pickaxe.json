@@ -15,6 +15,11 @@
     "extendedae:circuit_cutter",
     "extendedae:oversize_interface",
     "extendedae:fishbig",
-    "extendedae:silicon_block"
+    "extendedae:silicon_block",
+    "extendedae:assembler_matrix_frame",
+    "extendedae:assembler_matrix_wall",
+    "extendedae:assembler_matrix_pattern",
+    "extendedae:assembler_matrix_crafter",
+    "extendedae:assembler_matrix_speed"
   ]
 }

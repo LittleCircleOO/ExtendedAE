@@ -50,6 +50,7 @@ import com.github.glodblock.extendedae.common.tileentities.TileExPatternProvider
 import com.github.glodblock.extendedae.common.tileentities.TileIngredientBuffer;
 import com.github.glodblock.extendedae.config.EPPConfig;
 import com.github.glodblock.extendedae.container.ContainerActiveFormationPlane;
+import com.github.glodblock.extendedae.container.ContainerAssemblerMatrix;
 import com.github.glodblock.extendedae.container.ContainerCaner;
 import com.github.glodblock.extendedae.container.ContainerCircuitCutter;
 import com.github.glodblock.extendedae.container.ContainerExDrive;
@@ -206,6 +207,7 @@ public class RegistryHandler {
         registerMenuType("threshold_export_bus", ContainerThresholdExportBus.TYPE);
         registerMenuType("circuit_cutter", ContainerCircuitCutter.TYPE);
         registerMenuType("oversize_interface", ContainerExInterface.TYPE_OVERSIZE);
+        registerMenuType("assembler_matrix", ContainerAssemblerMatrix.TYPE);
         if (EAE.checkMod("ae2wtlib")) {
             WTCommonLoad.container();
         }
