@@ -143,7 +143,7 @@
   "jade.crystal_chamber.progress": "Прогресс: %s",
   "config.jade.plugin_extendedae.jade_wireless": "Цвет беспроводного соединителя",
   "key.epp.viewpattern": "Посмотреть шаблон",
-  "key.epp.category": "Extended AE"
+  "key.epp.category": "Extended AE",
   "config.extendedae.option.busSpeed": "ME Extend Bus Speed",
   "config.extendedae.option.infCellCost": "Infinity Cell Energy Cost",
   "config.extendedae.option.infCellTypeID": "Infinity Cell Type",
