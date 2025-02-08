@@ -60,6 +60,12 @@ public class EPPConfig {
     @Configurable.Range(min = 2, max = 4096)
     public int oversizeMultiplier = 16;
 
+    @Configurable
+    @Configurable.Comment("The max size of Assembler Matrix")
+    @Configurable.Synchronized
+    @Configurable.Range(min = 3, max = 16)
+    public int assemblerMatrixSize = 6;
+
     public List<Item> getInfCellItem() {
         return Arrays.stream(infCellTypeID).parallel().filter(
                 s -> FCUtil.checkInvalidRL(s, BuiltInRegistries.ITEM)

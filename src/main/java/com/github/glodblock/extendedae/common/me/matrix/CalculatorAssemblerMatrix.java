@@ -7,24 +7,24 @@ import com.github.glodblock.extendedae.common.tileentities.matrix.TileAssemblerM
 import com.github.glodblock.extendedae.common.tileentities.matrix.TileAssemblerMatrixFunction;
 import com.github.glodblock.extendedae.common.tileentities.matrix.TileAssemblerMatrixPattern;
 import com.github.glodblock.extendedae.common.tileentities.matrix.TileAssemblerMatrixWall;
+import com.github.glodblock.extendedae.config.EPPConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.entity.BlockEntity;
 public class CalculatorAssemblerMatrix extends MBCalculator<TileAssemblerMatrixBase, ClusterAssemblerMatrix> {
-    private static final int MAX_SIZE = 6;
     private static final int MIN_SIZE = 2;
     public CalculatorAssemblerMatrix(TileAssemblerMatrixBase t) {
         super(t);
     }
     @Override
     public boolean checkMultiblockScale(BlockPos min, BlockPos max) {
-        if (max.getX() - min.getX() > MAX_SIZE) {
+        if (max.getX() - min.getX() > EPPConfig.INSTANCE.assemblerMatrixSize) {
             return false;
         }
-        if (max.getY() - min.getY() > MAX_SIZE) {
+        if (max.getY() - min.getY() > EPPConfig.INSTANCE.assemblerMatrixSize) {
             return false;
         }
-        if (max.getZ() - min.getZ() > MAX_SIZE) {
+        if (max.getZ() - min.getZ() > EPPConfig.INSTANCE.assemblerMatrixSize) {
             return false;
         }
         if (max.getX() - min.getX() < MIN_SIZE) {
