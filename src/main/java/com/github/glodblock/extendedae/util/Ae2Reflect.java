@@ -15,7 +15,6 @@ import appeng.crafting.pattern.AECraftingPattern;
 import appeng.helpers.InterfaceLogic;
 import appeng.helpers.patternprovider.PatternContainer;
 import appeng.parts.AEBasePart;
-import appeng.parts.automation.AbstractLevelEmitterPart;
 import appeng.parts.automation.ExportBusPart;
 import appeng.parts.automation.IOBusPart;
 import appeng.util.ConfigInventory;
@@ -36,7 +35,6 @@ public class Ae2Reflect {
     private static final Field fDriveBlockEntity_clientSideCellState;
     private static final Field fDriveBlockEntity_clientSideCellItems;
     private static final Field fDriveBlockEntity_clientSideOnline;
-    private static final Field fAbstractLevelEmitterPart_prevState;
     private static final Field fAEBaseBlockEntity_customName;
     private static final Field fAEBasePart_customName;
     private static final Field fIOPortBlockEntity_inputCells;
@@ -60,7 +58,6 @@ public class Ae2Reflect {
             fDriveBlockEntity_clientSideCellState = reflectField(DriveBlockEntity.class, "clientSideCellState");
             fDriveBlockEntity_clientSideCellItems = reflectField(DriveBlockEntity.class, "clientSideCellItems");
             fDriveBlockEntity_clientSideOnline = reflectField(DriveBlockEntity.class, "clientSideOnline");
-            fAbstractLevelEmitterPart_prevState = reflectField(AbstractLevelEmitterPart.class, "prevState");
             fAEBaseBlockEntity_customName = reflectField(AEBaseBlockEntity.class, "customName");
             fAEBasePart_customName = reflectField(AEBasePart.class, "customName");
             fIOPortBlockEntity_inputCells = reflectField(IOPortBlockEntity.class, "inputCells");
@@ -181,10 +178,6 @@ public class Ae2Reflect {
 
     public static int getCompressIndex(AECraftingPattern owner, int id) {
         return Ae2Reflect.executeMethod2(owner, mAECraftingPattern_getCompressedIndexFromSparse, id);
-    }
-
-    public static boolean getPrevState(AbstractLevelEmitterPart owner) {
-        return Ae2Reflect.readField(owner, fAbstractLevelEmitterPart_prevState);
     }
 
     public static void setCustomName(Object owner, Component name) {
