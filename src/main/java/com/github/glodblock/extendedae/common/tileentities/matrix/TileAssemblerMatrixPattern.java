@@ -12,7 +12,9 @@ import appeng.api.stacks.KeyCounter;
 import appeng.blockentity.crafting.IMolecularAssemblerSupportedPattern;
 import appeng.helpers.patternprovider.PatternContainer;
 import appeng.util.inv.AppEngInternalInventory;
+import appeng.util.inv.FilteredInternalInventory;
 import appeng.util.inv.InternalInventoryHost;
+import appeng.util.inv.filter.AEItemFilters;
 import appeng.util.inv.filter.IAEItemFilter;
 import com.github.glodblock.extendedae.common.EAEItemAndBlock;
 import com.github.glodblock.extendedae.common.me.FreqGenerator;
@@ -32,12 +34,14 @@ public class TileAssemblerMatrixPattern extends TileAssemblerMatrixFunction impl
     public final static int INV_SIZE = 36;
     private final static FreqGenerator<Integer> G = FreqGenerator.createInt();
     private final AppEngInternalInventory patternInventory;
+    private final FilteredInternalInventory exposedInventory;
     private final List<IPatternDetails> patterns = new ArrayList<>();
     private int locateID = 0;
     public TileAssemblerMatrixPattern(BlockPos pos, BlockState blockState) {
         super(FCUtil.getTileType(TileAssemblerMatrixPattern.class, TileAssemblerMatrixPattern::new, EAEItemAndBlock.ASSEMBLER_MATRIX_PATTERN), pos, blockState);
         this.patternInventory = new AppEngInternalInventory(this, INV_SIZE, 1);
         this.patternInventory.setFilter(new Filter(this::getLevel));
+        this.exposedInventory = new FilteredInternalInventory(this.patternInventory, AEItemFilters.INSERT_ONLY);
         this.getMainNode().addService(ICraftingProvider.class, this);
     }
     @Override
@@ -53,6 +57,11 @@ public class TileAssemblerMatrixPattern extends TileAssemblerMatrixFunction impl
     public AppEngInternalInventory getPatternInventory() {
         return this.patternInventory;
     }
+
+    public FilteredInternalInventory getExposedInventory() {
+        return this.exposedInventory;
+    }
+
     public int getLocateID() {
         if (this.locateID == 0) {
             this.locateID = G.genFreq();
